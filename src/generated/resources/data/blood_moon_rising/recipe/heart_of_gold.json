@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "blood_moon_rising:heart"
+    },
+    "b": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "bbb",
+    "bab",
+    "bbb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "blood_moon_rising:heart_of_gold"
+  }
+}
