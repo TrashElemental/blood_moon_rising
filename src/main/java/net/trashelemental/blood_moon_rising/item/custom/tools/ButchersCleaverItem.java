@@ -29,8 +29,9 @@ public class ButchersCleaverItem extends AxeItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        int currentPoints = getCurrentPoints(stack);
-        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
+
+//        int currentPoints = getCurrentPoints(stack);
+//        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
 
         if (Screen.hasShiftDown()) {
             tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.butchers_cleaver").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));

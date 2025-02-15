@@ -29,8 +29,8 @@ public class SanguineChaliceItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        int currentPoints = getCurrentPoints(stack);
-        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
+//        int currentPoints = getCurrentPoints(stack);
+//        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
 
         List<MobEffectInstance> effects = getStoredPotionEffects(stack);
         if (!effects.isEmpty()) {

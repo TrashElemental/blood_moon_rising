@@ -31,8 +31,8 @@ public class SacrificialDaggerItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        int currentPoints = getCurrentPoints(stack);
-        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
+//        int currentPoints = getCurrentPoints(stack);
+//        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
 
         if (Screen.hasShiftDown()) {
             tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.sacrificial_dagger").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
