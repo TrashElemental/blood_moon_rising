@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "blood_moon_rising:item/jawblade"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blood_moon_rising:stage": 1
+      },
+      "model": "blood_moon_rising:item/jawblade_half"
+    },
+    {
+      "predicate": {
+        "blood_moon_rising:stage": 2
+      },
+      "model": "blood_moon_rising:item/jawblade_full"
+    }
+  ]
+}

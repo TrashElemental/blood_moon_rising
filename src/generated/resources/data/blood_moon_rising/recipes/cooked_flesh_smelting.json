@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "blood_moon_rising:exalted_flesh"
+  },
+  "result": "blood_moon_rising:cooked_flesh"
+}

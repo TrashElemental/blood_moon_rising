@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "blood_moon_rising:item/sanguine_chalice"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blood_moon_rising:stage": 1
+      },
+      "model": "blood_moon_rising:item/sanguine_chalice_full"
+    }
+  ]
+}
