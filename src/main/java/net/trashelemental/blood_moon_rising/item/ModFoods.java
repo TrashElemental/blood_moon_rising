@@ -3,6 +3,7 @@ package net.trashelemental.blood_moon_rising.item;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 
 public class ModFoods {
 
@@ -47,6 +48,12 @@ public class ModFoods {
     public static final FoodProperties JERKY = new FoodProperties.Builder().
             nutrition(4).
             saturationModifier(2.4f).
+            build();
+
+    public static final FoodProperties CONSECRATED_FLESH = new FoodProperties.Builder().
+            nutrition(10).
+            saturationModifier(1.6f).
+            effect(new MobEffectInstance(ModMobEffects.BERSERK, 240, 0), 1.0F).
             build();
 
 }

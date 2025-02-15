@@ -10,8 +10,6 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +19,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
+import net.trashelemental.blood_moon_rising.magic.effects.events.HemorrhageLogic;
+import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
 
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class SacrificialDaggerItem extends SwordItem {
         int currentPoints = getCurrentPoints(stack);
 
         if (currentPoints >= 10) {
-            return 4.0f;
+            return 3.0f;
         } else if (currentPoints >= 1) {
             return 2.0f;
         }
@@ -71,7 +71,7 @@ public class SacrificialDaggerItem extends SwordItem {
 
     //On hurting an enemy, reduces the target's health by an amount that corresponds
     //to how many points the weapon currently has, calculated above.
-    //Also has a 1/3 chance to apply Hemorrhage if it has at least 1 point.
+    //Also has a scaling chance to apply Hemorrhage if it has at least 1 point.
     @Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
@@ -83,8 +83,14 @@ public class SacrificialDaggerItem extends SwordItem {
 
         target.setHealth(newHealth);
 
-        if (currentPoints > 0 && attacker.level().random.nextInt(3) == 0) {
-            target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 3));
+        if (currentPoints >= 10) {
+            if (attacker.level().random.nextInt(2) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, attacker, 240);
+            }
+        } else if (currentPoints >= 1) {
+            if (attacker.level().random.nextInt(3) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, attacker, 240);
+            }
         }
 
         if (currentPoints > 0) {
@@ -105,6 +111,14 @@ public class SacrificialDaggerItem extends SwordItem {
         Holder<DamageType> damageTypeHolder = level.registryAccess()
                 .registryOrThrow(Registries.DAMAGE_TYPE)
                 .getHolderOrThrow(DamageTypes.GENERIC);
+
+        if (!level.isClientSide) {
+            PointsToolInteractions pointsToolInteractions = new PointsToolInteractions();
+            if (pointsToolInteractions.canAddPoints(player) && !(currentPoints >= maxPoints)) {
+                pointsToolInteractions.addPointsFromIchorOrChrismBottle(player, item, currentPoints, maxPoints);
+                return InteractionResultHolder.success(item);
+            }
+        }
 
         if (!level.isClientSide && !(currentPoints == maxPoints)) {
 

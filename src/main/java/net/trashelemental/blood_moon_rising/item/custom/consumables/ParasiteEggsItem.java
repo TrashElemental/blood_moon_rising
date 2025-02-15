@@ -3,23 +3,20 @@ package net.trashelemental.blood_moon_rising.item.custom.consumables;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.trashelemental.blood_moon_rising.entity.ModEntities;
+import net.trashelemental.blood_moon_rising.entity.event.MinionSpawnLogic;
 
 import java.util.List;
 
@@ -54,7 +51,7 @@ public class ParasiteEggsItem extends Item {
 
         int parasiteCount = 2 + level.getRandom().nextInt(2);
         for (int i = 0; i < parasiteCount; i++) {
-            spawnParasite(level, player);
+            MinionSpawnLogic.spawnParasite(level, player, 400);
         }
 
         if (!player.isCreative()) {
@@ -75,25 +72,5 @@ public class ParasiteEggsItem extends Item {
         return InteractionResultHolder.sidedSuccess(item, level.isClientSide());
     }
 
-    //Helper Methods
-    private static void spawnParasite(Level level, LivingEntity player) {
-        if (level instanceof ServerLevel serverLevel) {
-
-            boolean isInWater = player.isInWater();
-            var entityType = isInWater ? ModEntities.LEECH : ModEntities.MOSQUITO;
-            var entity = entityType.get().create(serverLevel);
-
-            if (entity != null) {
-                entity.moveTo(player.getX(), player.getY(), player.getZ(), level.getRandom().nextFloat() * 360F, 0);
-                entity.setTame(true, false);
-                entity.setOwnerUUID(player.getUUID());
-                entity.setAge(400);
-                serverLevel.addFreshEntity(entity);
-
-                serverLevel.sendParticles(ParticleTypes.DAMAGE_INDICATOR, player.getX(), player.getY(), player.getZ(),
-                        3, 0.5, 0.5, 0.5, 0.1);
-            }
-        }
-    }
 
 }

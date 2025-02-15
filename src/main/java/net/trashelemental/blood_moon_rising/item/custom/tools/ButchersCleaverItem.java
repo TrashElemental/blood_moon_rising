@@ -13,6 +13,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
+import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class ButchersCleaverItem extends AxeItem {
     }
 
     private static final int maxPoints = 12;
+    private static final int healing = 8;
 
     private int getCurrentPoints(ItemStack stack) {
         if (stack.has(ModComponents.POINTS)) {
@@ -83,6 +85,14 @@ public class ButchersCleaverItem extends AxeItem {
         int currentPoints = getCurrentPoints(item);
 
         if (!level.isClientSide) {
+            PointsToolInteractions pointsToolInteractions = new PointsToolInteractions();
+            if (pointsToolInteractions.canAddPoints(player) && !(currentPoints >= maxPoints)) {
+                pointsToolInteractions.addPointsFromIchorOrChrismBottle(player, item, currentPoints, maxPoints);
+                return InteractionResultHolder.success(item);
+            }
+        }
+
+        if (!level.isClientSide) {
             if (currentPoints == maxPoints) {
                 player.startUsingItem(usedHand);
             }
@@ -101,7 +111,7 @@ public class ButchersCleaverItem extends AxeItem {
 
             if (currentPoints == maxPoints) {
                 stack.set(ModComponents.POINTS, 0);
-                player.heal(8);
+                player.heal(healing);
 
                 if (!player.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1));

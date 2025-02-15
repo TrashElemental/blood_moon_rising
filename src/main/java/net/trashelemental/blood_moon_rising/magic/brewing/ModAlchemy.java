@@ -49,6 +49,8 @@ public class ModAlchemy {
 
 
         //Potions
+
+        //Health Boost
         PotionBrewing.Builder HealthBoostPotion = event.getBuilder();
         HealthBoostPotion.addMix(
                 Potions.AWKWARD,           //Item in the bottom slot
@@ -57,39 +59,27 @@ public class ModAlchemy {
         );
 
         PotionBrewing.Builder HealthBoostPotionLong = event.getBuilder();
-        HealthBoostPotionLong.addMix(
-                HEALTH_BOOST_POTION,
-                Items.REDSTONE,
-                HEALTH_BOOST_POTION_LONG
-        );
+        HealthBoostPotionLong.addMix(HEALTH_BOOST_POTION, Items.REDSTONE, HEALTH_BOOST_POTION_LONG);
 
         PotionBrewing.Builder HealthBoostPotionStrong = event.getBuilder();
-        HealthBoostPotionStrong.addMix(
-                HEALTH_BOOST_POTION,
-                Items.GLOWSTONE_DUST,
-                HEALTH_BOOST_POTION_STRONG
-        );
+        HealthBoostPotionStrong.addMix(HEALTH_BOOST_POTION, Items.GLOWSTONE_DUST, HEALTH_BOOST_POTION_STRONG);
 
+
+        //Absorption
         PotionBrewing.Builder AbsorptionPotion = event.getBuilder();
-        AbsorptionPotion.addMix(
-                Potions.AWKWARD,
-                ModItems.HEART_OF_GOLD.get(),
-                ABSORPTION_POTION
-        );
+        AbsorptionPotion.addMix(Potions.AWKWARD, ModItems.HEART_OF_GOLD.get(), ABSORPTION_POTION);
 
         PotionBrewing.Builder AbsorptionPotionLong = event.getBuilder();
-        AbsorptionPotionLong.addMix(
-                ABSORPTION_POTION,
-                Items.REDSTONE,
-                ABSORPTION_POTION_LONG
-        );
+        AbsorptionPotionLong.addMix(ABSORPTION_POTION, Items.REDSTONE, ABSORPTION_POTION_LONG);
 
         PotionBrewing.Builder AbsorptionPotionStrong = event.getBuilder();
-        AbsorptionPotionStrong.addMix(
-                ABSORPTION_POTION,
-                Items.GLOWSTONE_DUST,
-                ABSORPTION_POTION_STRONG
-        );
+        AbsorptionPotionStrong.addMix(ABSORPTION_POTION, Items.GLOWSTONE_DUST, ABSORPTION_POTION_STRONG);
+
+
+        //Health Drain
+
+
+        //Armor Shred
 
 
         //Non-Potions

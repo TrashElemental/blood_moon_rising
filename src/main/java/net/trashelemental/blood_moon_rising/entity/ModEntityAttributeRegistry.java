@@ -10,7 +10,7 @@ import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
 
 @EventBusSubscriber(modid = BloodMoonRising.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
-public class ModEntityClientEvents {
+public class ModEntityAttributeRegistry {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
@@ -21,18 +21,4 @@ public class ModEntityClientEvents {
 
 
     }
-
-
-    //Layers
-
-
-
-    @SubscribeEvent
-    public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
-
-
-
-    }
-
-
 }

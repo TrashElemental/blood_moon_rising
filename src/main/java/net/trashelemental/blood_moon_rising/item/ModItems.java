@@ -1,5 +1,6 @@
 package net.trashelemental.blood_moon_rising.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -9,6 +10,8 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
+import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfChrismItem;
+import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfIchorItem;
 import net.trashelemental.blood_moon_rising.item.custom.consumables.MultiplyingMorselItem;
 import net.trashelemental.blood_moon_rising.item.custom.consumables.ParasiteEggsItem;
 import net.trashelemental.blood_moon_rising.item.custom.consumables.foods.*;
@@ -40,9 +43,8 @@ public class ModItems {
             () -> new CuredHeartItem(new Item.Properties().food(ModFoods.CURED_HEART)));
     public static final DeferredItem<Item> HEART_OF_GOLD = ITEMS.register("heart_of_gold",
             () -> new HeartOfGoldItem(new Item.Properties().food(ModFoods.HEART_OF_GOLD)));
-    public static final DeferredItem<Item> CONSECRATED_FLESH = ITEMS.register("consecrated_flesh", //Not finished
-            () -> new Item(new Item.Properties().food(ModFoods.HEART_OF_GOLD)));
-            //() -> new Item(new Item.Properties().food(ModFoods.CONSECRATED_FLESH)));
+    public static final DeferredItem<Item> CONSECRATED_FLESH = ITEMS.register("consecrated_flesh",
+            () -> new ConsecratedFleshItem(new Item.Properties().food(ModFoods.CONSECRATED_FLESH)));
     public static final DeferredItem<Item> COOKED_FLESH = ITEMS.register("cooked_flesh",
             () -> new CookedFleshItem(new Item.Properties().food(ModFoods.COOKED_FLESH)));
     public static final DeferredItem<Item> CURED_FLESH = ITEMS.register("cured_flesh",
@@ -57,15 +59,18 @@ public class ModItems {
     public static final DeferredItem<Item> BOLUS = ITEMS.register("bolus",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BOTTLE_OF_CHRISM = ITEMS.register("bottle_of_chrism",
-            () -> new Item(new Item.Properties()));
+            () -> new BottleOfChrismItem(new Item.Properties()));
     public static final DeferredItem<Item> BOTTLE_OF_ICHOR = ITEMS.register("bottle_of_ichor",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> FLESHGROWTH_SEED = ITEMS.register("fleshgrowth_seed",
-            () -> new Item(new Item.Properties()));
+            () -> new BottleOfIchorItem(new Item.Properties()));
     public static final DeferredItem<Item> PARASITE_EGGS = ITEMS.register("parasite_eggs",
             () -> new ParasiteEggsItem(new Item.Properties()));
     public static final DeferredItem<Item> MULTIPLYING_MORSEL = ITEMS.register("multiplying_morsel",
             () -> new MultiplyingMorselItem(new Item.Properties()));
+
+
+    //Not Implemented Yet
+//  public static final DeferredItem<Item> FLESHGROWTH_SEED = ITEMS.register("fleshgrowth_seed",
+//          () -> new Item(new Item.Properties()));
 
 
     //Armor Items
@@ -79,7 +84,7 @@ public class ModItems {
     public static final DeferredItem<Item> AUGUR = ITEMS.register("augur",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> SANGUINE_CHALICE = ITEMS.register("sanguine_chalice",
-            () -> new Item(new Item.Properties()));
+            () -> new SanguineChaliceItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<AxeItem> BUTCHERS_CLEAVER = ITEMS.register("butchers_cleaver",
         () -> new ButchersCleaverItem(ModToolTiers.BMR, new Item.Properties()
                 .attributes(AxeItem.createAttributes(ModToolTiers.BMR, 5, -3.2f))));
@@ -93,7 +98,9 @@ public class ModItems {
             () -> new WarhamItem(ModToolTiers.BMR, new Item.Properties()
                     .attributes(AxeItem.createAttributes(ModToolTiers.BMR, 5, -3.2f))));
     public static final DeferredItem<Item> SACRED_SPEAR = ITEMS.register("sacred_spear",
-            () -> new Item(new Item.Properties()));
+            () -> new SacredSpearItem(new Item.Properties().stacksTo(1).durability(1360)
+                    .attributes(SacredSpearItem.createAttributes())
+                    .component(DataComponents.TOOL, SacredSpearItem.createToolProperties())));
 
 
 

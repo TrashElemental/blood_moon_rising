@@ -23,7 +23,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.FLEAM);
         simpleItem(ModItems.AUGUR);
-        handheldItem(ModItems.SACRED_SPEAR);
         handheldItem(ModItems.WARHAM);
 
         simpleItem(ModItems.HEART);
@@ -45,7 +44,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.BOTTLE_OF_CHRISM);
         simpleItem(ModItems.BOTTLE_OF_ICHOR);
         simpleItem(ModItems.PARASITE_EGGS);
-        simpleItem(ModItems.FLESHGROWTH_SEED);
         simpleItem(ModItems.MULTIPLYING_MORSEL);
 
         SpawnEggItem("leech");

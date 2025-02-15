@@ -16,7 +16,7 @@ public class ModItemProperties {
 
                     if (currentPoints == null) {
                         return 0f;
-                    } else if (currentPoints == 15) {
+                    } else if (currentPoints >= 16) {
                         return 2f;
                     } else if (currentPoints >= 8) {
                         return 1f;
@@ -31,7 +31,7 @@ public class ModItemProperties {
 
                     if (currentPoints == null) {
                         return 0f;
-                    } else if (currentPoints == 12) {
+                    } else if (currentPoints >= 12) {
                         return 2f;
                     } else if (currentPoints >= 6) {
                         return 1f;
@@ -49,6 +49,19 @@ public class ModItemProperties {
                     } else if (currentPoints >= 10) {
                         return 2f;
                     } else if (currentPoints >= 1) {
+                        return 1f;
+                    }
+                    return 0f;
+                });
+
+        ItemProperties.register(ModItems.SANGUINE_CHALICE.get(), ResourceLocation.fromNamespaceAndPath(BloodMoonRising.MOD_ID, "stage"),
+                (itemStack, clientLevel, livingEntity, i) -> {
+
+                    Integer currentPoints = itemStack.get(ModComponents.POINTS);
+
+                    if (currentPoints == null) {
+                        return 0f;
+                    } else if (currentPoints >= 12) {
                         return 1f;
                     }
                     return 0f;

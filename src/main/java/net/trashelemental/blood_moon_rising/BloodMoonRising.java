@@ -23,6 +23,7 @@ import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.LeechRenderer;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.MorselRenderer;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.MosquitoRenderer;
+import net.trashelemental.blood_moon_rising.entity.client.renderers.projectiles.SacredSpearProjectileRenderer;
 import net.trashelemental.blood_moon_rising.item.ModCreativeModeTabs;
 import net.trashelemental.blood_moon_rising.item.ModItemProperties;
 import net.trashelemental.blood_moon_rising.item.ModItems;
@@ -93,6 +94,8 @@ public class BloodMoonRising
             EntityRenderers.register(ModEntities.MORSEL.get(), MorselRenderer::new);
             EntityRenderers.register(ModEntities.LEECH.get(), LeechRenderer::new);
             EntityRenderers.register(ModEntities.MOSQUITO.get(), MosquitoRenderer::new);
+
+            EntityRenderers.register(ModEntities.SACRED_SPEAR_PROJECTILE_ENTITY.get(), SacredSpearProjectileRenderer::new);
 
         }
     }

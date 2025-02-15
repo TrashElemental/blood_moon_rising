@@ -1,4 +1,4 @@
-package net.trashelemental.blood_moon_rising.entity.ai;
+package net.trashelemental.blood_moon_rising.entity.event;
 
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.TamableAnimal;

@@ -3,6 +3,8 @@ package net.trashelemental.blood_moon_rising.components;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.item.alchemy.Potion;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -17,6 +19,12 @@ public class ModComponents {
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> POINTS = register(
             "tool_points", builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT));
+
+
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> IS_CHARGING_NIHIL = register(
+            "is_charging_nihil", builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));
+
 
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register

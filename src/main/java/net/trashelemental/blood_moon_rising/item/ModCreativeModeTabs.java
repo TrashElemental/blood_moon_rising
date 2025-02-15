@@ -4,8 +4,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.PotionItem;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
@@ -31,27 +29,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SANGUINE_CHALICE.get());
                         output.accept(ModItems.WARHAM.get());
 
-                        output.accept(ModItems.HEART.get());
-                        output.accept(ModItems.CHYME.get());
                         output.accept(ModItems.EXALTED_BONE.get());
                         output.accept(ModItems.ICHOR_CLOT.get());
+                        output.accept(ModItems.CHYME.get());
                         output.accept(ModItems.LIGAMENT.get());
-
-                        output.accept(ModItems.BOLUS.get());
-                        output.accept(ModItems.BOTTLE_OF_ICHOR.get());
-                        output.accept(ModItems.BOTTLE_OF_CHRISM.get());
-                        output.accept(ModItems.FLESHGROWTH_SEED.get());
-                        output.accept(ModItems.PARASITE_EGGS.get());
-                        output.accept(ModItems.MULTIPLYING_MORSEL.get());
+                        output.accept(ModItems.HEART.get());
 
                         output.accept(ModItems.COOKED_HEART.get());
                         output.accept(ModItems.CURED_HEART.get());
                         output.accept(ModItems.HEART_OF_GOLD.get());
-                        output.accept(ModItems.CONSECRATED_FLESH.get());
+                        output.accept(ModItems.EXALTED_FLESH.get());
                         output.accept(ModItems.COOKED_FLESH.get());
                         output.accept(ModItems.CURED_FLESH.get());
-                        output.accept(ModItems.EXALTED_FLESH.get());
+                        output.accept(ModItems.CONSECRATED_FLESH.get());
                         output.accept(ModItems.JERKY.get());
+                        output.accept(ModItems.MULTIPLYING_MORSEL.get());
+
+                        output.accept(ModItems.BOTTLE_OF_ICHOR.get());
+                        output.accept(ModItems.BOTTLE_OF_CHRISM.get());
+                        output.accept(ModItems.BOLUS.get());
+                        output.accept(ModItems.PARASITE_EGGS.get());
 
 
                         output.accept(ModItems.SCORCHED_HEART.get());

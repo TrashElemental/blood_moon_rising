@@ -27,6 +27,7 @@ public class ModEnchantments {
         var enchantments = context.lookup(Registries.ENCHANTMENT);
         var items = context.lookup(Registries.ITEM);
 
+        //Jagged Edge is incompatible with Fire Aspect due to fire damage clearing hemorrhage.
         register(context, JAGGED_EDGE, Enchantment.enchantment(Enchantment.definition(
                 items.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),                                //Enchantable items
                 items.getOrThrow(ItemTags.SHARP_WEAPON_ENCHANTABLE),                                //Preferred items
@@ -42,7 +43,7 @@ public class ModEnchantments {
 
         //Doing this one through an event handler because I'm a dumb idiot baby who can't read code and couldn't figure things out
         register(context, LAST_STAND, Enchantment.enchantment(Enchantment.definition(
-                        items.getOrThrow(ItemTags.ARMOR_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                         items.getOrThrow(ItemTags.CHEST_ARMOR_ENCHANTABLE),
                         2,
                         3,

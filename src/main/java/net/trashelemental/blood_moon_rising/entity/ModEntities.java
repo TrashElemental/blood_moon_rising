@@ -10,6 +10,7 @@ import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 
 
 public class ModEntities {
@@ -28,6 +29,13 @@ public class ModEntities {
                     .sized(0.4f, 0.3f).build("mosquito"));
 
 
+
+
+    //Projectiles
+    public static final DeferredHolder<EntityType<?>, EntityType<SacredSpearProjectileEntity>> SACRED_SPEAR_PROJECTILE_ENTITY =
+            ENTITY_TYPES.register("sacred_spear_projectile_entity",
+                    () -> EntityType.Builder.<SacredSpearProjectileEntity>of(SacredSpearProjectileEntity::new, MobCategory.MISC)
+                    .sized(0.3f, 0.3f).build("sacred_spear_projectile_entity"));
 
 
 

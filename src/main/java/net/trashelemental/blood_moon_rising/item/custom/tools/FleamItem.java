@@ -20,8 +20,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
+import net.trashelemental.blood_moon_rising.entity.event.MinionSpawnLogic;
 
 import java.util.List;
 
@@ -109,7 +109,7 @@ public class FleamItem extends Item {
                             .getHolderOrThrow(DamageTypes.GENERIC);
 
                     player.hurt(new DamageSource(damageTypeHolder), 2.0F);
-                    spawnMorsel(level, player);
+                    MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, -900);
 
                     for (int i = 0; i < 10; i++) {
                         double offsetX = (level.random.nextDouble() - 0.5) * 2;
@@ -136,16 +136,6 @@ public class FleamItem extends Item {
             }
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(usedHand), level.isClientSide());
-    }
-
-    //Helper Methods
-    private void spawnMorsel(Level level, Player player) {
-        MorselEntity morsel = new MorselEntity(ModEntities.MORSEL.get(), level);
-        morsel.moveTo(player.getX(), player.getY(), player.getZ(), 0, 0);
-        morsel.setTame(true, false);
-        morsel.setOwnerUUID(player.getUUID());
-        morsel.setAge(-900);
-        level.addFreshEntity(morsel);
     }
 }
 
