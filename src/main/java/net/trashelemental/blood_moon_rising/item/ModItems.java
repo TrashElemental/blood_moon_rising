@@ -1,5 +1,6 @@
 package net.trashelemental.blood_moon_rising.item;
 
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -7,11 +8,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.armor.ModArmorMaterials;
+import net.trashelemental.blood_moon_rising.armor.custom.VisceralArmorItem;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfChrismItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfIchorItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.MultiplyingMorselItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.ParasiteEggsItem;
+import net.trashelemental.blood_moon_rising.item.custom.HeartItem;
+import net.trashelemental.blood_moon_rising.item.custom.consumables.*;
 import net.trashelemental.blood_moon_rising.item.custom.consumables.foods.*;
 import net.trashelemental.blood_moon_rising.item.custom.tools.*;
 
@@ -29,6 +30,8 @@ public class ModItems {
     public static final RegistryObject<Item> ICHOR_CLOT = ITEMS.register("ichor_clot",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIGAMENT = ITEMS.register("ligament",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EMBRYO = ITEMS.register("embryo",
             () -> new Item(new Item.Properties()));
 
 
@@ -53,7 +56,7 @@ public class ModItems {
 
     //Functional Items
     public static final RegistryObject<Item> BOLUS = ITEMS.register("bolus",
-            () -> new Item(new Item.Properties()));
+            () -> new BolusItem(new Item.Properties()));
     public static final RegistryObject<Item> BOTTLE_OF_CHRISM = ITEMS.register("bottle_of_chrism",
             () -> new BottleOfChrismItem(new Item.Properties()));
     public static final RegistryObject<Item> BOTTLE_OF_ICHOR = ITEMS.register("bottle_of_ichor",
@@ -62,6 +65,8 @@ public class ModItems {
             () -> new ParasiteEggsItem(new Item.Properties()));
     public static final RegistryObject<Item> MULTIPLYING_MORSEL = ITEMS.register("multiplying_morsel",
             () -> new MultiplyingMorselItem(new Item.Properties()));
+    public static final RegistryObject<Item> AMNION = ITEMS.register("amnion",
+            () -> new Item(new Item.Properties()));
 
 
     //Not Implemented Yet
@@ -70,13 +75,20 @@ public class ModItems {
 
 
     //Armor Items
-
+    public static final RegistryObject<Item> VISCERAL_HELMET = ITEMS.register("visceral_helmet",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> VISCERAL_CHESTPLATE = ITEMS.register("visceral_chestplate",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> VISCERAL_LEGGINGS = ITEMS.register("visceral_leggings",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> VISCERAL_BOOTS = ITEMS.register("visceral_boots",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     //Tools
     public static final RegistryObject<Item> FLEAM = ITEMS.register("fleam",
             () -> new FleamItem(new Item.Properties().stacksTo(1).durability(35)));
     public static final RegistryObject<Item> AUGUR = ITEMS.register("augur",
-            () -> new Item(new Item.Properties()));
+            () -> new AugurItem(new Item.Properties().stacksTo(1).durability(30)));
     public static final RegistryObject<Item> SANGUINE_CHALICE = ITEMS.register("sanguine_chalice",
             () -> new SanguineChaliceItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SACRED_SPEAR = ITEMS.register("sacred_spear",
@@ -89,6 +101,8 @@ public class ModItems {
             () -> new SacrificialDaggerItem(ModToolTiers.BMR, new Item.Properties()));
     public static final RegistryObject<Item> WARHAM = ITEMS.register("warham",
             () -> new WarhamItem(ModToolTiers.BMR, new Item.Properties()));
+    public static final RegistryObject<Item> BLOODSHOT = ITEMS.register("bloodshot",
+            () -> new Item(new Item.Properties()));
 
 
 
@@ -101,35 +115,35 @@ public class ModItems {
 
     //Hearts
     public static final RegistryObject<Item> ASTRAL_HEART = ITEMS.register("astral_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> BROKEN_HEART = ITEMS.register("broken_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> DIVIDING_HEART = ITEMS.register("dividing_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> ECHOING_HEART = ITEMS.register("echoing_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> ELUSIVE_HEART = ITEMS.register("elusive_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> FERAL_HEART = ITEMS.register("feral_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> FRANTIC_HEART = ITEMS.register("frantic_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> FROZEN_HEART = ITEMS.register("frozen_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_HEART = ITEMS.register("heavy_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> HUNGRY_HEART = ITEMS.register("hungry_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> SCORCHED_HEART = ITEMS.register("scorched_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> SELFLESS_HEART = ITEMS.register("selfless_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> SPITEFUL_HEART = ITEMS.register("spiteful_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> TAINTED_HEART = ITEMS.register("tainted_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final RegistryObject<Item> WRATHFUL_HEART = ITEMS.register("wrathful_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

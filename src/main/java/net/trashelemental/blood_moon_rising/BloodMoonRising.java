@@ -9,11 +9,15 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.trashelemental.blood_moon_rising.block.ModBlocks;
+import net.trashelemental.blood_moon_rising.blood_moon.network.BloodMoonNetworking;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.HeartEffectsRegistry;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.LeechRenderer;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.MorselRenderer;
@@ -40,8 +44,7 @@ public class BloodMoonRising
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public BloodMoonRising()
-    {
+    public BloodMoonRising() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModCreativeModeTabs.register(modEventBus);
@@ -58,11 +61,13 @@ public class BloodMoonRising
         MinecraftForge.EVENT_BUS.register(this);
 
         modEventBus.addListener(this::addCreative);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(BloodMoonNetworking::register);
+        event.enqueueWork(HeartEffectsRegistry::register);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event)

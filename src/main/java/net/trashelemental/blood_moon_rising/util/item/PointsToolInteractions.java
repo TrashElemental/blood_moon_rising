@@ -9,6 +9,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 
+/**
+ * This class handles the interaction where Ichor and Chrism Bottles can add points to the mod tools.
+ */
+
 public class PointsToolInteractions {
 
     public boolean canAddPoints(Player player) {

@@ -24,7 +24,7 @@ public class BottleOfIchorItem extends Item {
 
         tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_health").withStyle(ChatFormatting.BLUE));
         tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_hunger").withStyle(ChatFormatting.RED));
-        tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_poison").withStyle(ChatFormatting.RED));
+        tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_weakness").withStyle(ChatFormatting.RED));
 
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
     }
@@ -49,7 +49,7 @@ public class BottleOfIchorItem extends Item {
     }
 
     //When the player uses the item, it will restore 6 health, inflict hunger II for 15 seconds,
-    //and it has a chance to inflict poison II for 7 seconds. And it will return a bottle.
+    //and it has a chance to inflict weakness II for 7 seconds. And it will return a bottle.
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
 
@@ -59,7 +59,7 @@ public class BottleOfIchorItem extends Item {
             player.addEffect(new MobEffectInstance(MobEffects.HUNGER, 15 * 20, 1));
 
             if (level.getRandom().nextFloat() < 0.25f) {
-                player.addEffect(new MobEffectInstance(MobEffects.POISON, 7 * 20, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 7 * 20, 1));
             }
 
             if (!player.isCreative()) {

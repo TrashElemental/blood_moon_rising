@@ -1,1 +1,16 @@
-// 1.20.1	2025-01-24T20:28:42.8428969	Tags for minecraft:item mod id blood_moon_rising
+// 1.20.1	2025-05-16T12:46:55.1847673	Tags for minecraft:item mod id blood_moon_rising
+9876006e7bfd27352ad45569f20acb79cbbb3090 data/forge/tags/items/armors.json
+36f32d1292917d652a8a7bc9468f31d20e5d1f4a data/forge/tags/items/armors/boots.json
+b8e13f0d30f03f138886770f4113b82a69b3e58d data/forge/tags/items/armors/chestplates.json
+b8e13f0d30f03f138886770f4113b82a69b3e58d data/forge/tags/items/armors/chest_armors.json
+7046c37851188a8b7ce8b8db67c58543a9824471 data/forge/tags/items/armors/helmets.json
+4b856d3a9c0ead2d214739ab2a2613e08de7fb44 data/forge/tags/items/armors/leggings.json
+b78c3c4adbb615e1a69f55742cbfbda8e4a082f6 data/forge/tags/items/swords.json
+b78c3c4adbb615e1a69f55742cbfbda8e4a082f6 data/forge/tags/items/tools/swords.json
+36f32d1292917d652a8a7bc9468f31d20e5d1f4a data/neoforge/tags/items/armors/boots.json
+b8e13f0d30f03f138886770f4113b82a69b3e58d data/neoforge/tags/items/armors/chestplates.json
+b8e13f0d30f03f138886770f4113b82a69b3e58d data/neoforge/tags/items/armors/chest_armors.json
+7046c37851188a8b7ce8b8db67c58543a9824471 data/neoforge/tags/items/armors/helmets.json
+4b856d3a9c0ead2d214739ab2a2613e08de7fb44 data/neoforge/tags/items/armors/leggings.json
+b78c3c4adbb615e1a69f55742cbfbda8e4a082f6 data/neoforge/tags/items/swords.json
+b78c3c4adbb615e1a69f55742cbfbda8e4a082f6 data/neoforge/tags/items/tools/swords.json

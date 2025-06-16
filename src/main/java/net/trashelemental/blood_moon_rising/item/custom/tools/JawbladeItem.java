@@ -4,6 +4,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -12,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
@@ -66,13 +69,21 @@ public class JawbladeItem extends SwordItem {
 
         int currentPoints = getCurrentPoints(stack);
 
-        if (!attacker.hasEffect(ModMobEffects.BERSERK.get())) {
+        if (attacker instanceof Player player && !player.hasEffect(ModMobEffects.BERSERK.get())) {
             if (currentPoints < maxPoints) {
-                setCurrentPoints(stack, currentPoints + 1);
+                int pointsToAdd = 1;
+                if (AstralHeartEffect.hasAstralHeart(player)) {
+                    if (player.getRandom().nextInt(3) == 0) {
+                        pointsToAdd = 2;
+                    }
+                }
+                setCurrentPoints(stack, Math.min(currentPoints + pointsToAdd, maxPoints));
             }
         }
 
-        stack.hurtAndBreak(1, attacker, (entity) -> {entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);});
+        stack.hurtAndBreak(1, attacker, (entity) -> {
+            entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+        });
 
         return true;
     }
@@ -81,6 +92,7 @@ public class JawbladeItem extends SwordItem {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
 
+        boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
         ItemStack item = player.getItemInHand(usedHand);
         int currentPoints = getCurrentPoints(item);
 
@@ -92,12 +104,16 @@ public class JawbladeItem extends SwordItem {
                 return InteractionResultHolder.success(item);
             }
 
-
             if (currentPoints == maxPoints) {
+                if (!player.hasEffect(ModMobEffects.EXHAUSTION.get()) && !player.hasEffect(ModMobEffects.BERSERK.get())) {
+                    setCurrentPoints(item, 0);
 
-                setCurrentPoints(item, 0);
-                player.addEffect(new MobEffectInstance(ModMobEffects.BERSERK.get(), 160, 0));
+                    int duration = astralHeart ? 240 : 160;
+                    int amplifier = astralHeart ? 1 : 0;
 
+                    player.addEffect(new MobEffectInstance(ModMobEffects.BERSERK.get(), duration, amplifier));
+                    level.playSound(null, player.blockPosition(), SoundEvents.POLAR_BEAR_WARNING, SoundSource.PLAYERS, 1f, 0.3f);
+                }
             }
         }
 

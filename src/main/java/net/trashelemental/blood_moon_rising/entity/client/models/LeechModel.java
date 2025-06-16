@@ -1,7 +1,7 @@
 package net.trashelemental.blood_moon_rising.entity.client.models;
 
 import net.minecraft.resources.ResourceLocation;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class LeechModel extends GeoModel<LeechEntity> {

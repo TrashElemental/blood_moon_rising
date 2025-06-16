@@ -5,9 +5,9 @@ import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
-import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 
 @Mod.EventBusSubscriber(modid = BloodMoonRising.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEventBusEvents {

@@ -11,10 +11,15 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
+import net.trashelemental.blood_moon_rising.util.ModTags;
 
 import javax.annotation.Nullable;
 
+@Mod.EventBusSubscriber
 public class HemorrhageLogic {
 
     //If a target receives the hemorrhage effect, the game will check if it already has the effect.
@@ -48,6 +53,10 @@ public class HemorrhageLogic {
 
     public static void hemorrhageActivate(LivingEntity target, Entity attacker) {
 
+        if (!hemorrhageCanApply(target)) {
+            return;
+        }
+
         float damageAmount = Math.min(target.getMaxHealth() * 0.25f, 15.0f);
 
         Holder<DamageType> damage = target.level().registryAccess()
@@ -71,7 +80,25 @@ public class HemorrhageLogic {
 
     public static boolean hemorrhageCanApply(LivingEntity target) {
         return !target.isOnFire()
-                && !target.isInLava();
+                && !target.isInLava()
+                && !target.getType().is(ModTags.Entities.HEMORRHAGE_IMMUNE);
+    }
+
+    @SubscribeEvent
+    public static void clearHemorrhageOnFireDamage(LivingDamageEvent event) {
+
+        LivingEntity target = event.getEntity();
+        DamageSource source = event.getSource();
+
+        if (target.hasEffect(ModMobEffects.HEMORRHAGE.get()) && isFireTypeDamage(source)) {
+            target.removeEffect(ModMobEffects.HEMORRHAGE.get());
+        }
+    }
+
+    public static boolean isFireTypeDamage(DamageSource source) {
+        return source.is(DamageTypes.LAVA)
+                || source.is(DamageTypes.IN_FIRE)
+                || source.is(DamageTypes.ON_FIRE);
     }
 
 }

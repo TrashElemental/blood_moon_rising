@@ -12,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
-import net.trashelemental.blood_moon_rising.item.ModItems;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 import org.jetbrains.annotations.NotNull;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -50,6 +49,7 @@ public class SacredSpearProjectileEntity extends AbstractArrow implements GeoEnt
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         Entity entity = result.getEntity();
+
 
         if (!this.level().isClientSide && entity instanceof LivingEntity target) {
             if (this.random.nextFloat() < hemorrhageChance) {

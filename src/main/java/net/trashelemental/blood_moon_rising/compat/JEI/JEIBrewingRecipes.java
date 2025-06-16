@@ -69,6 +69,7 @@ public class JEIBrewingRecipes implements IModPlugin {
 
 
         //Absorption Potion
+        ingredientStack.clear();
         ingredientStack.add(new ItemStack(ModItems.HEART_OF_GOLD.get()));
         PotionUtils.setPotion(potion, Potions.AWKWARD);
         PotionUtils.setPotion(potion2, ModPotions.ABSORPTION_POTION.get());
@@ -99,9 +100,68 @@ public class JEIBrewingRecipes implements IModPlugin {
         ));
 
 
+        //Health Down Potion
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(Items.FERMENTED_SPIDER_EYE));
+        PotionUtils.setPotion(potion, ModPotions.HEALTH_BOOST_POTION.get());
+        PotionUtils.setPotion(potion2, ModPotions.HEALTH_DOWN_POTION.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
+
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(Items.REDSTONE));
+        PotionUtils.setPotion(potion, ModPotions.HEALTH_DOWN_POTION.get());
+        PotionUtils.setPotion(potion2, ModPotions.HEALTH_DOWN_POTION_LONG.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
+
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(Items.GLOWSTONE_DUST));
+        PotionUtils.setPotion(potion, ModPotions.HEALTH_DOWN_POTION.get());
+        PotionUtils.setPotion(potion2, ModPotions.HEALTH_DOWN_POTION_STRONG.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
 
 
+        //Corrosion Potion
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(ModItems.CHYME.get()));
+        PotionUtils.setPotion(potion, Potions.AWKWARD);
+        PotionUtils.setPotion(potion2, ModPotions.CORROSION_POTION.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
 
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(Items.REDSTONE));
+        PotionUtils.setPotion(potion, ModPotions.CORROSION_POTION.get());
+        PotionUtils.setPotion(potion2, ModPotions.CORROSION_POTION_LONG.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
+
+        ingredientStack.clear();
+        ingredientStack.add(new ItemStack(Items.GLOWSTONE_DUST));
+        PotionUtils.setPotion(potion, ModPotions.CORROSION_POTION.get());
+        PotionUtils.setPotion(potion2, ModPotions.CORROSION_POTION_STRONG.get());
+        brewingRecipes.add(factory.createBrewingRecipe(
+                List.copyOf(ingredientStack),
+                potion.copy(),
+                potion2.copy()
+        ));
 
 
         registration.addRecipes(RecipeTypes.BREWING, brewingRecipes);

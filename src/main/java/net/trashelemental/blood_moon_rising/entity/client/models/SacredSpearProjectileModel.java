@@ -1,7 +1,6 @@
 package net.trashelemental.blood_moon_rising.entity.client.models;
 
 import net.minecraft.resources.ResourceLocation;
-import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 import software.bernie.geckolib.model.GeoModel;
 

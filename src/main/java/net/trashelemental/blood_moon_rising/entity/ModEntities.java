@@ -7,9 +7,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
-import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 
 public class ModEntities {

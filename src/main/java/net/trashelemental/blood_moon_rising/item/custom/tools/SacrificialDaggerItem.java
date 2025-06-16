@@ -16,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
@@ -82,6 +83,10 @@ public class SacrificialDaggerItem extends SwordItem {
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
         if (attacker.level().isClientSide) return false;
+        if (!(attacker instanceof Player player)) return false;
+
+        boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+        boolean avoidPointLoss = astralHeart && player.level().random.nextBoolean();
 
         int currentPoints = getCurrentPoints(stack);
         float bonusDamage = getBonusDamage(stack);
@@ -90,20 +95,20 @@ public class SacrificialDaggerItem extends SwordItem {
         target.setHealth(newHealth);
 
         if (currentPoints >= 10) {
-            if (attacker.level().random.nextInt(2) == 0) {
-                HemorrhageLogic.applyHemorrhage(target, attacker, 160);
+            if (player.level().random.nextInt(2) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, player, 160);
             }
         } else if (currentPoints >= 1) {
-            if (attacker.level().random.nextInt(3) == 0) {
-                HemorrhageLogic.applyHemorrhage(target, attacker, 160);
+            if (player.level().random.nextInt(3) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, player, 160);
             }
         }
 
-        if (currentPoints > 0) {
+        if (currentPoints > 0 && !(avoidPointLoss)) {
             setCurrentPoints(stack, currentPoints - 1);
         }
 
-        stack.hurtAndBreak(1, attacker, (entity) -> {
+        stack.hurtAndBreak(1, player, (entity) -> {
             entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
         });
 
@@ -136,12 +141,17 @@ public class SacrificialDaggerItem extends SwordItem {
             setCurrentPoints(item, maxPoints);
             player.swing(usedHand);
 
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+            float minDamage = astralHeart ? 1.5f : 3.0f;
+            float medDamage = astralHeart ? 3.0f : 6.0f;
+            float maxDamage = astralHeart ? 4.0f : 8.0f;
+
             if (currentPoints >= 10) {
-                player.hurt(new DamageSource(damageTypeHolder), 3.0f);
+                player.hurt(new DamageSource(damageTypeHolder), minDamage);
             } else if (currentPoints >= 1) {
-                player.hurt(new DamageSource(damageTypeHolder), 6.0f);
+                player.hurt(new DamageSource(damageTypeHolder), medDamage);
             } else if (currentPoints == 0) {
-                player.hurt(new DamageSource(damageTypeHolder), 8.0f);
+                player.hurt(new DamageSource(damageTypeHolder), maxDamage);
             }
 
         }

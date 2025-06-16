@@ -10,6 +10,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
@@ -22,6 +24,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 import net.trashelemental.blood_moon_rising.util.event.NihilAttack;
@@ -30,6 +33,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+@SuppressWarnings("Deprecated")
 public class SacredSpearItem extends Item {
     private static final int NIHIL_CHARGE_TIME = 32;
     private static final int PROJECTILE_CHARGE_TIME = 10;
@@ -85,11 +89,11 @@ public class SacredSpearItem extends Item {
     }
 
     private int getCurrentPoints(ItemStack stack) {
-        return stack.getOrCreateTag().getInt("SacredSpearPoints");
+        return stack.getOrCreateTag().getInt("Points");
     }
 
     private void setCurrentPoints(ItemStack stack, int points) {
-        stack.getOrCreateTag().putInt("SacredSpearPoints", points);
+        stack.getOrCreateTag().putInt("Points", points);
     }
 
     @Override
@@ -174,14 +178,25 @@ public class SacredSpearItem extends Item {
 
     private void performNihilAttack(Player player, Level level, ItemStack stack) {
         if (level.isClientSide) return;
+        boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+        int damage = astralHeart ? 113 : 226;
 
-        stack.hurtAndBreak(226, player, (entity) -> {entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);});
+        stack.hurtAndBreak(damage, player, (entity) -> {entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);});
 
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 SoundEvents.POLAR_BEAR_DEATH, SoundSource.PLAYERS, 1.0F, 0.4F);
 
         NihilAttack nihilAttack = new NihilAttack();
         nihilAttack.performNihilAttack(player);
+
+        if (astralHeart) {
+            if (!player.hasEffect(MobEffects.ABSORPTION)) {
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 300, 0, false, false));
+            }
+            if (!player.hasEffect(MobEffects.DAMAGE_BOOST)) {
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300, 0, false, false));
+            }
+        }
 
         setCurrentPoints(stack, maxPoints);
     }

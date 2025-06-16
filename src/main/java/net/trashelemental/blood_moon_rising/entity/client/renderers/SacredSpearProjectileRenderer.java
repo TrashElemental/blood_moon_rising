@@ -6,7 +6,6 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.entity.client.models.SacredSpearProjectileModel;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;

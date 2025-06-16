@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "net.trashelemental.blood_moon_rising.blood_moon.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BloodMoonSkyMixin",
+    "LightMapMixin"
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

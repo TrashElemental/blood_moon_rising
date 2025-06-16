@@ -20,7 +20,7 @@ public class ModEntityTagGenerator extends EntityTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        TagKey<EntityType<?>> mantisPreyTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("infested:mantis_prey"));
+        TagKey<EntityType<?>> hemorrhageImmuneTag = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("blood_moon_rising:hemorrhage_immune"));
 
 
     }

@@ -20,8 +20,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
 import net.trashelemental.blood_moon_rising.entity.event.MinionSpawnLogic;
+import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -61,39 +63,12 @@ public class FleamItem extends Item {
                     morsel.discard();
                     consumedMorsel = true;
 
-                    int steps = 5;
-                    double deltaX = player.getX() - morsel.getX();
-                    double deltaY = (player.getY() - (morsel.getY() + morsel.getBbHeight() / 2));
-                    double deltaZ = player.getZ() - morsel.getZ();
-
-                    for (int i = 0; i <= steps; i++) {
-                        double progress = i / (double) steps;
-                        double particleX = morsel.getX() + deltaX * progress;
-                        double particleY = morsel.getY() + deltaY * progress + 0.5;
-                        double particleZ = morsel.getZ() + deltaZ * progress;
-
-                        ((ServerLevel) level).sendParticles(ParticleTypes.DAMAGE_INDICATOR,
-                                particleX, particleY, particleZ,
-                                1, 0, 0, 0, 0);
-                    }
+                    ParticleMethods.ParticleTrailEntityToEntity(level, ParticleTypes.DAMAGE_INDICATOR, morsel, player, 5);
                 }
 
                 if (consumedMorsel) {
                     level.playSound(null, player.getX(), player.getY(), player.getZ(),
                             SoundEvents.HUSK_CONVERTED_TO_ZOMBIE, player.getSoundSource(), 1.0F, 1.5F);
-
-                    for (int i = 0; i < 10; i++) {
-                        double offsetX = (level.random.nextDouble() - 0.5) * 2;
-                        double offsetY = level.random.nextDouble();
-                        double offsetZ = (level.random.nextDouble() - 0.5) * 2;
-
-                        ((ServerLevel) level).sendParticles(ParticleTypes.DAMAGE_INDICATOR,
-                                player.getX() + offsetX,
-                                player.getY() + 0.5 + offsetY,
-                                player.getZ() + offsetZ,
-                                1,
-                                0, 0, 0, 0);
-                    }
                 }
 
             }
@@ -104,32 +79,28 @@ public class FleamItem extends Item {
         else {
 
             if (!level.isClientSide) {
+
+                boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+                boolean avoidDamage = astralHeart && level.random.nextBoolean();
+
                 if (player.getHealth() > 2.0F) {
                     Holder<DamageType> damageTypeHolder = level.registryAccess()
                             .registryOrThrow(Registries.DAMAGE_TYPE)
                             .getHolderOrThrow(DamageTypes.GENERIC);
 
-                    player.hurt(new DamageSource(damageTypeHolder), 2.0F);
-                    MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, -900);
+                    MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, 900, true);
 
-                    for (int i = 0; i < 10; i++) {
-                        double offsetX = (level.random.nextDouble() - 0.5) * 2;
-                        double offsetY = level.random.nextDouble();
-                        double offsetZ = (level.random.nextDouble() - 0.5) * 2;
+                    ParticleMethods.ParticlesAroundServerSide(level, ParticleTypes.DAMAGE_INDICATOR,
+                            player.getX(), player.getY() + 0.5, player.getZ(), 5, 1.5);
 
-                        ((ServerLevel) level).sendParticles(ParticleTypes.DAMAGE_INDICATOR,
-                                player.getX() + offsetX,
-                                player.getY() + 0.5 + offsetY,
-                                player.getZ() + offsetZ,
-                                1,
-                                0, 0, 0, 0);
+                    if (!avoidDamage) {
+                        player.hurt(new DamageSource(damageTypeHolder), 2.0F);
+                        ItemStack fleam = player.getItemInHand(usedHand);
+                        fleam.hurtAndBreak(1, player, (entity) -> {
+                            entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+                        });
                     }
 
-                    level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                            SoundEvents.HUSK_CONVERTED_TO_ZOMBIE, player.getSoundSource(), 0.5F, 0.8F);
-
-                    ItemStack fleam = player.getItemInHand(usedHand);
-                    fleam.hurtAndBreak(1, player, (entity) -> {entity.broadcastBreakEvent(EquipmentSlot.MAINHAND);});
                     player.getCooldowns().addCooldown(this, 20);
                 } else {
                     player.displayClientMessage(Component.translatable("message.blood_moon_rising.fleam_fail"), true);

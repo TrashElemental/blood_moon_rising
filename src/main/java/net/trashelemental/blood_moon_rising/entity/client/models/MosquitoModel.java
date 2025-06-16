@@ -1,7 +1,7 @@
 package net.trashelemental.blood_moon_rising.entity.client.models;
 
 import net.minecraft.resources.ResourceLocation;
-import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;

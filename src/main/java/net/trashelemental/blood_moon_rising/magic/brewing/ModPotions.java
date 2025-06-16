@@ -8,6 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 
 public class ModPotions {
     public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(ForgeRegistries.POTIONS, BloodMoonRising.MOD_ID);
@@ -25,6 +26,20 @@ public class ModPotions {
             new Potion(new MobEffectInstance(MobEffects.ABSORPTION, 2400, 0, false, true)));
     public static final RegistryObject<Potion> ABSORPTION_POTION_STRONG = REGISTRY.register("absorption_potion_strong", () ->
             new Potion(new MobEffectInstance(MobEffects.ABSORPTION, 440, 1, false, true)));
+
+    public static final RegistryObject<Potion> HEALTH_DOWN_POTION = REGISTRY.register("health_down_potion", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN.get(), 400, 0, false, true)));
+    public static final RegistryObject<Potion> HEALTH_DOWN_POTION_LONG = REGISTRY.register("health_down_potion_long", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN.get(), 1200, 0, false, true)));
+    public static final RegistryObject<Potion> HEALTH_DOWN_POTION_STRONG = REGISTRY.register("health_down_potion_strong", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN.get(), 200, 1, false, true)));
+
+    public static final RegistryObject<Potion> CORROSION_POTION = REGISTRY.register("corrosion_potion", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION.get(), 600, 0, false, true)));
+    public static final RegistryObject<Potion> CORROSION_POTION_LONG = REGISTRY.register("corrosion_potion_long", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION.get(), 1500, 0, false, true)));
+    public static final RegistryObject<Potion> CORROSION_POTION_STRONG = REGISTRY.register("corrosion_potion_strong", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION.get(), 300, 1, false, true)));
 
 
 

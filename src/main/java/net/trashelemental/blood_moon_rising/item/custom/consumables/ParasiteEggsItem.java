@@ -5,7 +5,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -52,7 +51,7 @@ public class ParasiteEggsItem extends Item {
 
         int parasiteCount = 2 + level.getRandom().nextInt(2);
         for (int i = 0; i < parasiteCount; i++) {
-            MinionSpawnLogic.spawnParasite(level, player, 400);
+            MinionSpawnLogic.spawnParasite(level, player, 400, true);
         }
 
         if (!player.isCreative()) {
@@ -64,9 +63,6 @@ public class ParasiteEggsItem extends Item {
         if (player.getHealth() > 1) {
             player.hurt(new DamageSource(damageTypeHolder), 1.0F);
         }
-
-        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.FROGSPAWN_HATCH, player.getSoundSource(), 1F, 0.8F);
 
         player.getCooldowns().addCooldown(this, 60);
 

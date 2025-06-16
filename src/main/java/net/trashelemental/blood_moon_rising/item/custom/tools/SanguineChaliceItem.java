@@ -15,11 +15,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Optional;
 
 public class SanguineChaliceItem extends Item {
     public SanguineChaliceItem(Properties properties) {
@@ -51,7 +51,6 @@ public class SanguineChaliceItem extends Item {
     }
 
     private static final int maxPoints = 12;
-    private static final int healing = 10;
     private static final String POINTS_TAG = "Points";
 
     public static int getCurrentPoints(ItemStack stack) {
@@ -156,10 +155,15 @@ public class SanguineChaliceItem extends Item {
 
         if (!level.isClientSide && entity instanceof Player player) {
 
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+            int amplifier = astralHeart ? 2 : 1;
+            int healing = astralHeart ? 20 : 10;
+            int baseDuration = astralHeart ? 300 : 600;
+
             setCurrentPoints(stack, 0);
 
             if (player.getHealth() == player.getMaxHealth()) {
-                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, amplifier));
             } else {
                 player.heal(healing);
             }
@@ -168,7 +172,7 @@ public class SanguineChaliceItem extends Item {
 
             for (MobEffectInstance effect : effects) {
                 int duration = effect.getEffect() ==
-                        MobEffects.HEAL || effect.getEffect() == MobEffects.HARM ? 1 : 300;
+                        MobEffects.HEAL || effect.getEffect() == MobEffects.HARM ? 1 : baseDuration;
 
                 player.addEffect(new MobEffectInstance(effect.getEffect(), duration, effect.getAmplifier()));
             }

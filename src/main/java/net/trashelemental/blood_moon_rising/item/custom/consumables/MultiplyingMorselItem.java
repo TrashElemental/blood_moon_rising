@@ -4,7 +4,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -74,11 +73,8 @@ public class MultiplyingMorselItem extends Item {
 
             int morselCount = 1 + level.getRandom().nextInt(2);
             for (int i = 0; i < morselCount; i++) {
-                MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, -900);
+                MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, 900, true);
             }
-
-            level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    SoundEvents.HUSK_CONVERTED_TO_ZOMBIE, player.getSoundSource(), 0.3F, 1.3F);
 
             if (!player.isCreative()) {
                 stack.shrink(1);

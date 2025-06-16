@@ -23,7 +23,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.FLEAM);
         simpleItem(ModItems.AUGUR);
-        handheldItem(ModItems.SACRED_SPEAR);
         handheldItem(ModItems.WARHAM);
 
         simpleItem(ModItems.HEART);
@@ -31,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.EXALTED_BONE);
         simpleItem(ModItems.ICHOR_CLOT);
         simpleItem(ModItems.LIGAMENT);
+        simpleItem(ModItems.EMBRYO);
 
         simpleItem(ModItems.COOKED_HEART);
         simpleItem(ModItems.CURED_HEART);
@@ -40,12 +40,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CURED_FLESH);
         simpleItem(ModItems.EXALTED_FLESH);
         simpleItem(ModItems.JERKY);
+        simpleItem(ModItems.AMNION);
 
         simpleItem(ModItems.BOLUS);
         simpleItem(ModItems.BOTTLE_OF_CHRISM);
         simpleItem(ModItems.BOTTLE_OF_ICHOR);
         simpleItem(ModItems.PARASITE_EGGS);
         simpleItem(ModItems.MULTIPLYING_MORSEL);
+
+        simpleItem(ModItems.VISCERAL_HELMET);
+        simpleItem(ModItems.VISCERAL_CHESTPLATE);
+        simpleItem(ModItems.VISCERAL_LEGGINGS);
+        simpleItem(ModItems.VISCERAL_BOOTS);
 
         SpawnEggItem("leech");
         SpawnEggItem("mosquito");

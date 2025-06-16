@@ -8,6 +8,7 @@ import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.compat.BetterCombat.BetterCombatWeaponPresetProvider;
 import net.trashelemental.blood_moon_rising.datagen.loot.ModLootTableProvider;
 import net.trashelemental.blood_moon_rising.datagen.tags.ModBlockTagGenerator;
 import net.trashelemental.blood_moon_rising.datagen.tags.ModEntityTagGenerator;
@@ -41,6 +42,8 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new ModAdvancementProvider(packOutput, lookupProvider, existingFileHelper));
 
+        //Better Combat
+        generator.addProvider(event.includeServer(), new BetterCombatWeaponPresetProvider(packOutput));
 
     }
 }
