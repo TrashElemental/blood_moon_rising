@@ -2,13 +2,11 @@ package net.trashelemental.blood_moon_rising.item.custom.tools;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,8 +15,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
-import net.trashelemental.blood_moon_rising.item.ModItems;
 import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
 
 import java.util.List;
@@ -56,7 +54,6 @@ public class SanguineChaliceItem extends Item {
     }
 
     private static final int maxPoints = 12;
-    private static final int healing = 10;
 
     public static int getCurrentPoints(ItemStack stack) {
         if (stack.has(ModComponents.POINTS)) {
@@ -160,8 +157,13 @@ public class SanguineChaliceItem extends Item {
 
             stack.set(ModComponents.POINTS, 0);
 
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+            int amplifier = astralHeart ? 2 : 1;
+            int healing = astralHeart ? 20 : 10;
+            int baseDuration = astralHeart ? 300 : 600;
+
             if (player.getHealth() == player.getMaxHealth()) {
-                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1));
+                player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, amplifier));
             } else {
                 player.heal(healing);
             }
@@ -170,7 +172,7 @@ public class SanguineChaliceItem extends Item {
 
             for (MobEffectInstance effect : effects) {
                 int duration = effect.getEffect() ==
-                        MobEffects.HEAL || effect.getEffect() == MobEffects.HARM ? 1 : 300;
+                        MobEffects.HEAL || effect.getEffect() == MobEffects.HARM ? 1 : baseDuration;
 
                 player.addEffect(new MobEffectInstance(effect.getEffect(), duration, effect.getAmplifier()));
             }

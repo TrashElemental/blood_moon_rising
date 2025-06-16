@@ -2,12 +2,11 @@ package net.trashelemental.blood_moon_rising.entity;
 
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
-import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 
 @EventBusSubscriber(modid = BloodMoonRising.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEntityAttributeRegistry {

@@ -10,6 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 
 import java.util.List;
@@ -63,12 +64,15 @@ public class WarhamItem extends AxeItem {
 
         if (!level.isClientSide && entity instanceof Player player) {
 
-            int hunger = 8;
-            float saturation = 2.4f;
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+
+            int hunger = astralHeart ? 16 : 8;
+            float saturation = astralHeart ? 3 : 2.4f;
+            int damage = astralHeart ? 136 : 272;
 
             player.getFoodData().eat(hunger, saturation);
 
-            stack.hurtAndBreak(272, player, EquipmentSlot.MAINHAND);
+            stack.hurtAndBreak(damage, player, EquipmentSlot.MAINHAND);
 
         }
 

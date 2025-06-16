@@ -7,9 +7,9 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
-import net.trashelemental.blood_moon_rising.entity.custom.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 
 import javax.annotation.Nullable;
 

@@ -11,10 +11,15 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
+import net.trashelemental.blood_moon_rising.util.ModTags;
 
 import javax.annotation.Nullable;
 
+@EventBusSubscriber
 public class HemorrhageLogic {
 
     //If a target receives the hemorrhage effect, the game will check if it already has the effect.
@@ -46,6 +51,10 @@ public class HemorrhageLogic {
 
     public static void hemorrhageActivate(LivingEntity target, Entity attacker) {
 
+        if (!hemorrhageCanApply(target)) {
+            return;
+        }
+
         float damageAmount = Math.min(target.getMaxHealth() * 0.25f, 15.0f);
         Holder<DamageType> damage = target.level().registryAccess()
                 .registryOrThrow(Registries.DAMAGE_TYPE)
@@ -67,7 +76,25 @@ public class HemorrhageLogic {
 
     public static boolean hemorrhageCanApply(LivingEntity target) {
         return !target.isOnFire()
-                && !target.isInLava();
+                && !target.isInLava()
+                && !target.getType().is(ModTags.EntityTags.HEMORRHAGE_IMMUNE);
+    }
+
+    @SubscribeEvent
+    public static void clearHemorrhageOnFireDamage(LivingDamageEvent.Post event) {
+
+        LivingEntity target = event.getEntity();
+        DamageSource source = event.getSource();
+
+        if (target.hasEffect(ModMobEffects.HEMORRHAGE) && isFireTypeDamage(source)) {
+            target.removeEffect(ModMobEffects.HEMORRHAGE);
+        }
+    }
+
+    public static boolean isFireTypeDamage(DamageSource source) {
+        return source.is(DamageTypes.LAVA)
+                || source.is(DamageTypes.IN_FIRE)
+                || source.is(DamageTypes.ON_FIRE);
     }
 
 }

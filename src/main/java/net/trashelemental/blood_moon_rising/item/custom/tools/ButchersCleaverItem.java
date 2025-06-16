@@ -11,6 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import net.trashelemental.blood_moon_rising.util.item.PointsToolInteractions;
@@ -65,13 +66,21 @@ public class ButchersCleaverItem extends AxeItem {
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
         if (attacker.level().isClientSide) return;
+        if (!(attacker instanceof Player player)) return;
 
         int currentPoints = getCurrentPoints(stack);
+
+        int pointsToAdd = 1;
+        if (AstralHeartEffect.hasAstralHeart(player)) {
+            if (player.getRandom().nextInt(3) == 0) {
+                pointsToAdd = 2;
+            }
+        }
 
         if (!stack.has(ModComponents.POINTS)) {
             stack.set(ModComponents.POINTS, 1);
         } else if (currentPoints < maxPoints) {
-            stack.set(ModComponents.POINTS, currentPoints + 1);
+            stack.set(ModComponents.POINTS, currentPoints + Math.min(currentPoints + pointsToAdd, maxPoints));
         }
 
         super.postHurtEnemy(stack, target, attacker);
@@ -108,17 +117,21 @@ public class ButchersCleaverItem extends AxeItem {
         if (!level.isClientSide && livingEntity instanceof Player player) {
 
             int currentPoints = getCurrentPoints(stack);
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+            int duration = astralHeart ? 300 : 200;
+            int amplifier = astralHeart ? 2 : 1;
+            float healing = astralHeart ? 12 : 8;
 
             if (currentPoints == maxPoints) {
                 stack.set(ModComponents.POINTS, 0);
                 player.heal(healing);
 
                 if (!player.hasEffect(MobEffects.DAMAGE_RESISTANCE)) {
-                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1));
+                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier));
                 }
 
                 if (!player.hasEffect(MobEffects.DAMAGE_BOOST)) {
-                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1));
+                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier));
                 }
 
             }

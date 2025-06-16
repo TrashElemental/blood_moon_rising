@@ -54,6 +54,19 @@ public class ModItemProperties {
                     return 0f;
                 });
 
+        ItemProperties.register(ModItems.SACRED_SPEAR.get(), ResourceLocation.fromNamespaceAndPath(BloodMoonRising.MOD_ID, "stage"),
+                (itemStack, clientLevel, livingEntity, i) -> {
+
+                    Integer currentPoints = itemStack.get(ModComponents.POINTS);
+
+                    if (currentPoints == null) {
+                        return 0f;
+                    } else if (currentPoints > 0) {
+                        return 1f;
+                    }
+                    return 0f;
+                });
+
         ItemProperties.register(ModItems.SANGUINE_CHALICE.get(), ResourceLocation.fromNamespaceAndPath(BloodMoonRising.MOD_ID, "stage"),
                 (itemStack, clientLevel, livingEntity, i) -> {
 

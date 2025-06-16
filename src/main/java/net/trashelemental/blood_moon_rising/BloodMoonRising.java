@@ -18,6 +18,8 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 import net.trashelemental.blood_moon_rising.armor.ModArmorMaterials;
 import net.trashelemental.blood_moon_rising.block.ModBlocks;
+import net.trashelemental.blood_moon_rising.capabilities.AttachmentsRegistry;
+import net.trashelemental.blood_moon_rising.capabilities.hearts.HeartEffectsRegistry;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.LeechRenderer;
@@ -61,11 +63,13 @@ public class BloodMoonRising
         ModArmorMaterials.register(modEventBus);
         ModComponents.register(modEventBus);
         ModEnchantmentEffects.register(modEventBus);
+        AttachmentsRegistry.register(modEventBus);
 
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
 
+        HeartEffectsRegistry.register();
 
 
     }

@@ -15,6 +15,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.item.ModItems;
+import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 
 @EventBusSubscriber
 public class ModAlchemy {
@@ -36,6 +37,21 @@ public class ModAlchemy {
     public static final DeferredHolder<Potion, Potion> ABSORPTION_POTION_STRONG = REGISTRY.register("absorption_potion_strong", () ->
             new Potion(new MobEffectInstance(MobEffects.ABSORPTION, 440, 1, false, true)));
 
+    //Health Down
+    public static final DeferredHolder<Potion, Potion> HEALTH_DOWN_POTION = REGISTRY.register("health_down_potion", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN, 400, 0, false, true)));
+    public static final DeferredHolder<Potion, Potion> HEALTH_DOWN_POTION_LONG = REGISTRY.register("health_down_potion_long", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN, 1200, 0, false, true)));
+    public static final DeferredHolder<Potion, Potion> HEALTH_DOWN_POTION_STRONG = REGISTRY.register("health_down_potion_strong", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.HEALTH_DOWN, 200, 1, false, true)));
+
+    //Corrosion
+    public static final DeferredHolder<Potion, Potion> CORROSION_POTION = REGISTRY.register("corrosion_potion", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION, 600, 0, false, true)));
+    public static final DeferredHolder<Potion, Potion> CORROSION_POTION_LONG = REGISTRY.register("corrosion_potion_long", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION, 1500, 0, false, true)));
+    public static final DeferredHolder<Potion, Potion> CORROSION_POTION_STRONG = REGISTRY.register("corrosion_potion_strong", () ->
+            new Potion(new MobEffectInstance(ModMobEffects.CORROSION, 300, 1, false, true)));
 
 
 
@@ -76,11 +92,25 @@ public class ModAlchemy {
         AbsorptionPotionStrong.addMix(ABSORPTION_POTION, Items.GLOWSTONE_DUST, ABSORPTION_POTION_STRONG);
 
 
-        //Health Drain
+        //Health Down
+        PotionBrewing.Builder HealthDownPotion = event.getBuilder();
+        HealthDownPotion.addMix(HEALTH_BOOST_POTION, Items.FERMENTED_SPIDER_EYE, HEALTH_DOWN_POTION);
 
+        PotionBrewing.Builder HealthDownPotionLong = event.getBuilder();
+        HealthDownPotionLong.addMix(HEALTH_DOWN_POTION, Items.REDSTONE, HEALTH_DOWN_POTION_LONG);
 
-        //Armor Shred
+        PotionBrewing.Builder HealthDownPotionStrong = event.getBuilder();
+        HealthDownPotionStrong.addMix(HEALTH_DOWN_POTION, Items.GLOWSTONE_DUST, HEALTH_DOWN_POTION_STRONG);
 
+        //Corrosion
+        PotionBrewing.Builder CorrosionPotion = event.getBuilder();
+        CorrosionPotion.addMix(Potions.AWKWARD, ModItems.CHYME.get(), CORROSION_POTION);
+
+        PotionBrewing.Builder CorrosionPotionLong = event.getBuilder();
+        CorrosionPotionLong.addMix(CORROSION_POTION, Items.REDSTONE, CORROSION_POTION_LONG);
+
+        PotionBrewing.Builder CorrosionPotionStrong = event.getBuilder();
+        CorrosionPotionStrong.addMix(CORROSION_POTION, Items.GLOWSTONE_DUST, CORROSION_POTION_STRONG);
 
         //Non-Potions
 

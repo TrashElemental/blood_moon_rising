@@ -1,0 +1,6 @@
+{
+  "parent": "blood_moon_rising:item/gun_item",
+  "textures": {
+    "layer0": "blood_moon_rising:item/bloodshot"
+  }
+}

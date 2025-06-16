@@ -17,6 +17,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import net.trashelemental.blood_moon_rising.magic.effects.events.HemorrhageLogic;
@@ -76,6 +77,10 @@ public class SacrificialDaggerItem extends SwordItem {
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
 
         if (attacker.level().isClientSide) return;
+        if (!(attacker instanceof Player player)) return;
+
+        boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+        boolean avoidPointLoss = astralHeart && player.level().random.nextBoolean();
 
         int currentPoints = getCurrentPoints(stack);
         float bonusDamage = getBonusDamage(stack);
@@ -84,16 +89,16 @@ public class SacrificialDaggerItem extends SwordItem {
         target.setHealth(newHealth);
 
         if (currentPoints >= 10) {
-            if (attacker.level().random.nextInt(2) == 0) {
-                HemorrhageLogic.applyHemorrhage(target, attacker, 240);
+            if (player.level().random.nextInt(2) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, player, 240);
             }
         } else if (currentPoints >= 1) {
-            if (attacker.level().random.nextInt(3) == 0) {
-                HemorrhageLogic.applyHemorrhage(target, attacker, 240);
+            if (player.level().random.nextInt(3) == 0) {
+                HemorrhageLogic.applyHemorrhage(target, player, 240);
             }
         }
 
-        if (currentPoints > 0) {
+        if (currentPoints > 0 && !(avoidPointLoss)) {
             stack.set(ModComponents.POINTS, currentPoints - 1);
         }
 
@@ -125,12 +130,17 @@ public class SacrificialDaggerItem extends SwordItem {
             item.set(ModComponents.POINTS, maxPoints);
             player.swing(usedHand);
 
+            boolean astralHeart = AstralHeartEffect.hasAstralHeart(player);
+            float minDamage = astralHeart ? 1.5f : 3.0f;
+            float medDamage = astralHeart ? 3.0f : 6.0f;
+            float maxDamage = astralHeart ? 4.0f : 8.0f;
+
             if (currentPoints >= 10) {
-                player.hurt(new DamageSource(damageTypeHolder), 3.0f);
+                player.hurt(new DamageSource(damageTypeHolder), minDamage);
             } else if (currentPoints >= 1) {
-                player.hurt(new DamageSource(damageTypeHolder), 6.0f);
+                player.hurt(new DamageSource(damageTypeHolder), medDamage);
             } else if (currentPoints == 0) {
-                player.hurt(new DamageSource(damageTypeHolder), 8.0f);
+                player.hurt(new DamageSource(damageTypeHolder), maxDamage);
             }
 
         }

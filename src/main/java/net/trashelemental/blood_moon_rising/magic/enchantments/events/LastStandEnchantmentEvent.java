@@ -1,21 +1,13 @@
 package net.trashelemental.blood_moon_rising.magic.enchantments.events;
 
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.trashelemental.blood_moon_rising.magic.enchantments.ModEnchantments;
-
-import javax.annotation.Nullable;
 
 //When the wearer is at 8 health or less, reduces incoming damage.
 //At 8 health or below, damage is reduced by 2 per level.

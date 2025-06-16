@@ -7,36 +7,39 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-// An example config class. This is not required, but it's a good idea to have one to keep your config organized.
-// Demonstrates how to use Neo's config APIs
 @EventBusSubscriber(modid = BloodMoonRising.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class Config
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    //private static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
-           // .comment("Whether to log the dirt block on common setup")
-           // .define("logDirtBlock", true);
+    //Demo related
+    public static final ModConfigSpec.BooleanValue DEMO_MESSAGE = BUILDER
+            .comment("Controls whether a message providing information about the demo is sent to each player joining a world. Defaults to true.")
+            .define("Send the information message:", true);
+    public static final ModConfigSpec.BooleanValue SHOW_ALL = BUILDER
+            .comment("Controls whether items that currently have no functionality will appear in the Creative Mode tab. Defaults to false.")
+            .define("Show unimplemented items:", false);
 
-    //private static final ModConfigSpec.IntValue MAGIC_NUMBER = BUILDER
-           // .comment("A magic number")
-          //  .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+    //Non demo related
+    public static final ModConfigSpec.BooleanValue DO_BLOOD_MOON = BUILDER
+            .comment("Controls whether blood moons happen. Defaults to true.")
+            .define("Blood moons happen:", true);
 
-   // public static final ModConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
-           // .comment("What you want the introduction message to be for the magic number")
-           // .define("magicNumberIntroduction", "The magic number is... ");
+    public static final ModConfigSpec.IntValue BLOOD_MOON_INTERVAL = BUILDER
+            .comment("Controls the number of days between each blood moon. Defaults to 10.")
+            .defineInRange("Number of days between each blood moon:", 10, 0, 100);
 
-    // a list of strings that are treated as resource locations for items
-  //  private static final ModConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
-          //  .comment("A list of items to log on common setup.")
-          //  .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
+    public static final ModConfigSpec.BooleanValue DO_BLOOD_MOON_ACTIVATION_NOISE = BUILDER
+            .comment("Controls whether an ominous sound should play when a blood moon starts or ends. Defaults to true.")
+            .define("Play a sound when the blood moon starts or ends:", true);
+    public static final ModConfigSpec.BooleanValue DO_BLOOD_MOON_ACTIVATION_MESSAGE = BUILDER
+            .comment("Controls whether a message should be set notifying players when a blood moon starts or ends. Defaults to false.")
+            .define("Send a message when the blood moon starts or ends:", false);
+    public static final ModConfigSpec.BooleanValue DO_BLOOD_MOON_VISUAL_EFFECTS = BUILDER
+            .comment("Controls whether the world fog, moon, and light should be tinted red during a blood moon. Defaults to true.")
+            .define("Tint world fog red during a blood moon:", true);
 
     static final ModConfigSpec SPEC = BUILDER.build();
-
-   // public static boolean logDirtBlock;
-   // public static int magicNumber;
-   //public static String magicNumberIntroduction;
-   // public static Set<Item> items;
 
     private static boolean validateItemName(final Object obj)
     {

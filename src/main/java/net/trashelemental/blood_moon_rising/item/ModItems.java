@@ -1,6 +1,7 @@
 package net.trashelemental.blood_moon_rising.item;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SwordItem;
@@ -9,11 +10,11 @@ import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.armor.ModArmorMaterials;
+import net.trashelemental.blood_moon_rising.armor.custom.VisceralArmorItem;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfChrismItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.BottleOfIchorItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.MultiplyingMorselItem;
-import net.trashelemental.blood_moon_rising.item.custom.consumables.ParasiteEggsItem;
+import net.trashelemental.blood_moon_rising.item.custom.HeartItem;
+import net.trashelemental.blood_moon_rising.item.custom.consumables.*;
 import net.trashelemental.blood_moon_rising.item.custom.consumables.foods.*;
 import net.trashelemental.blood_moon_rising.item.custom.tools.*;
 
@@ -33,6 +34,8 @@ public class ModItems {
     public static final DeferredItem<Item> ICHOR_CLOT = ITEMS.register("ichor_clot",
             () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> LIGAMENT = ITEMS.register("ligament",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> EMBRYO = ITEMS.register("embryo",
             () -> new Item(new Item.Properties()));
 
 
@@ -57,7 +60,7 @@ public class ModItems {
 
     //Functional Items
     public static final DeferredItem<Item> BOLUS = ITEMS.register("bolus",
-            () -> new Item(new Item.Properties()));
+            () -> new BolusItem(new Item.Properties()));
     public static final DeferredItem<Item> BOTTLE_OF_CHRISM = ITEMS.register("bottle_of_chrism",
             () -> new BottleOfChrismItem(new Item.Properties()));
     public static final DeferredItem<Item> BOTTLE_OF_ICHOR = ITEMS.register("bottle_of_ichor",
@@ -66,6 +69,8 @@ public class ModItems {
             () -> new ParasiteEggsItem(new Item.Properties()));
     public static final DeferredItem<Item> MULTIPLYING_MORSEL = ITEMS.register("multiplying_morsel",
             () -> new MultiplyingMorselItem(new Item.Properties()));
+    public static final DeferredItem<Item> AMNION = ITEMS.register("amnion",
+            () -> new Item(new Item.Properties()));
 
 
     //Not Implemented Yet
@@ -74,7 +79,18 @@ public class ModItems {
 
 
     //Armor Items
-
+    public static final DeferredItem<Item> VISCERAL_HELMET = ITEMS.register("visceral_helmet",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.HELMET, new Item.Properties()
+                    .stacksTo(1).durability(363)));
+    public static final DeferredItem<Item> VISCERAL_CHESTPLATE = ITEMS.register("visceral_chestplate",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.CHESTPLATE, new Item.Properties()
+                    .stacksTo(1).durability(528)));
+    public static final DeferredItem<Item> VISCERAL_LEGGINGS = ITEMS.register("visceral_leggings",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.LEGGINGS, new Item.Properties()
+                    .stacksTo(1).durability(495)));
+    public static final DeferredItem<Item> VISCERAL_BOOTS = ITEMS.register("visceral_boots",
+            () -> new VisceralArmorItem(ModArmorMaterials.VISCERAL, ArmorItem.Type.BOOTS, new Item.Properties()
+                    .stacksTo(1).durability(429)));
 
 
 
@@ -82,7 +98,7 @@ public class ModItems {
     public static final DeferredItem<Item> FLEAM = ITEMS.register("fleam",
             () -> new FleamItem(new Item.Properties().stacksTo(1).durability(35)));
     public static final DeferredItem<Item> AUGUR = ITEMS.register("augur",
-            () -> new Item(new Item.Properties()));
+            () -> new AugurItem(new Item.Properties()));
     public static final DeferredItem<Item> SANGUINE_CHALICE = ITEMS.register("sanguine_chalice",
             () -> new SanguineChaliceItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<AxeItem> BUTCHERS_CLEAVER = ITEMS.register("butchers_cleaver",
@@ -101,6 +117,8 @@ public class ModItems {
             () -> new SacredSpearItem(new Item.Properties().stacksTo(1).durability(1360)
                     .attributes(SacredSpearItem.createAttributes())
                     .component(DataComponents.TOOL, SacredSpearItem.createToolProperties())));
+    public static final DeferredItem<Item> BLOODSHOT = ITEMS.register("bloodshot",
+            () -> new Item(new Item.Properties()));
 
 
 
@@ -114,35 +132,35 @@ public class ModItems {
 
     //Hearts
     public static final DeferredItem<Item> ASTRAL_HEART = ITEMS.register("astral_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> BROKEN_HEART = ITEMS.register("broken_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> DIVIDING_HEART = ITEMS.register("dividing_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> ECHOING_HEART = ITEMS.register("echoing_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> ELUSIVE_HEART = ITEMS.register("elusive_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> FERAL_HEART = ITEMS.register("feral_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> FRANTIC_HEART = ITEMS.register("frantic_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> FROZEN_HEART = ITEMS.register("frozen_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> HEAVY_HEART = ITEMS.register("heavy_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> HUNGRY_HEART = ITEMS.register("hungry_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> SCORCHED_HEART = ITEMS.register("scorched_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> SELFLESS_HEART = ITEMS.register("selfless_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> SPITEFUL_HEART = ITEMS.register("spiteful_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> TAINTED_HEART = ITEMS.register("tainted_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
     public static final DeferredItem<Item> WRATHFUL_HEART = ITEMS.register("wrathful_heart",
-            () -> new Item(new Item.Properties()));
+            () -> new HeartItem(new Item.Properties()));
 
 
     public static void register(IEventBus eventBus) {

@@ -1,1 +1,7 @@
-// 1.21.1	2024-10-02T10:44:18.4332935	Tags for minecraft:item mod id vanilla
+// 1.21.1	2025-05-16T12:35:52.7921064	Tags for minecraft:item mod id vanilla
+b8e13f0d30f03f138886770f4113b82a69b3e58d data/minecraft/tags/item/chest_armor.json
+36f32d1292917d652a8a7bc9468f31d20e5d1f4a data/minecraft/tags/item/foot_armor.json
+7046c37851188a8b7ce8b8db67c58543a9824471 data/minecraft/tags/item/head_armor.json
+4b856d3a9c0ead2d214739ab2a2613e08de7fb44 data/minecraft/tags/item/leg_armor.json
+06189ad807ad47ce7a2a35bc8c14f5a1dd4deccc data/minecraft/tags/item/swords.json
+df683637759924ba578331feca046ef69ded4ec9 data/minecraft/tags/item/wolf_food.json

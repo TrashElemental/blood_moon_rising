@@ -1,25 +1,25 @@
 package net.trashelemental.blood_moon_rising.entity.event;
 
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
+import net.trashelemental.blood_moon_rising.junkyard_lib.entity.method.SummonMethods;
 
 public class MinionSpawnLogic {
 
-    public static void spawnMorsel(ServerLevel level, Player player, int age) {
+    public static void spawnMorsel(ServerLevel level, Player player, int lifespan, boolean playSound) {
         MorselEntity morsel = new MorselEntity(ModEntities.MORSEL.get(), level);
-        morsel.moveTo(player.getX(), player.getY(), player.getZ(), 0, 0);
-        morsel.setTame(true, false);
-        morsel.setOwnerUUID(player.getUUID());
-        morsel.setAge(age);
-        level.addFreshEntity(morsel);
+        SummonMethods.summonMinion(level, player.blockPosition().below(), morsel, lifespan, false, player);
+        if (playSound) {
+            level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.HUSK_CONVERTED_TO_ZOMBIE, player.getSoundSource(), 0.3F, 1.3F);
+        }
     }
 
-    public static void spawnParasite(Level level, LivingEntity player, int age) {
+    public static void spawnParasite(Level level, Player player, int lifespan, boolean playSound) {
         if (level instanceof ServerLevel serverLevel) {
 
             boolean isInWater = player.isInWater();
@@ -27,14 +27,12 @@ public class MinionSpawnLogic {
             var entity = entityType.get().create(serverLevel);
 
             if (entity != null) {
-                entity.moveTo(player.getX(), player.getY(), player.getZ(), level.getRandom().nextFloat() * 360F, 0);
-                entity.setTame(true, false);
-                entity.setOwnerUUID(player.getUUID());
-                entity.setAge(age);
-                serverLevel.addFreshEntity(entity);
+                SummonMethods.summonMinion(level, player.blockPosition().below(), entity, lifespan, false, player);
+            }
 
-                serverLevel.sendParticles(ParticleTypes.DAMAGE_INDICATOR, player.getX(), player.getY(), player.getZ(),
-                        3, 0.5, 0.5, 0.5, 0.1);
+            if (playSound) {
+                level.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        SoundEvents.FROGSPAWN_HATCH, player.getSoundSource(), 1F, 0.8F);
             }
         }
     }

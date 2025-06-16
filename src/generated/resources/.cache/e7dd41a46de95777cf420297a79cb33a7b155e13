@@ -1,4 +1,5 @@
-// 1.21.1	2025-01-27T00:00:07.4612256	Item Models: blood_moon_rising
+// 1.21.1	2025-05-15T19:26:03.1143834	Item Models: blood_moon_rising
+885cc58005424fb31403aa27d7c82ca9f3fe534b assets/blood_moon_rising/models/item/amnion.json
 0256a05d9f0659b2cc633cece2f3aba7e5486223 assets/blood_moon_rising/models/item/astral_heart.json
 efd04712feff3d2affcbf5eb5cfcebda2cb0db41 assets/blood_moon_rising/models/item/augur.json
 7ac686226dbcbd0eeb913eaca26ef1c971c5ab4c assets/blood_moon_rising/models/item/bolus.json
@@ -14,6 +15,7 @@ a43fd0ecbc248ed2a7922af1bd2f1fe459ce4444 assets/blood_moon_rising/models/item/cu
 61695c2cf2a9fc91bf7914f58b5227938c934560 assets/blood_moon_rising/models/item/dividing_heart.json
 22bcee2d4f2c5025e9ffdeae53b5129a1384ca58 assets/blood_moon_rising/models/item/echoing_heart.json
 f15e1a1c166e80a8463ff7f202d0ecb701b19a47 assets/blood_moon_rising/models/item/elusive_heart.json
+317858310f6fe9339f2fa486d53cfbc204c7e860 assets/blood_moon_rising/models/item/embryo.json
 4028407e7ddcd17d7afa9be9117200092b2859b2 assets/blood_moon_rising/models/item/exalted_bone.json
 e69db5b564da2cf53e1614406fd246d74e1a615d assets/blood_moon_rising/models/item/exalted_flesh.json
 bc587f18ad52bb7c3fba272e7dd8d8e8e2346c62 assets/blood_moon_rising/models/item/feral_heart.json
@@ -35,5 +37,9 @@ bd90749d8e86fd7ff24ba62221747f9edb0e4dd7 assets/blood_moon_rising/models/item/pa
 5b7314e94fb915a6bfa8d4b74786a1f5d51d7b25 assets/blood_moon_rising/models/item/selfless_heart.json
 474f23c188d1f365f6660a942653fd6ac42f3491 assets/blood_moon_rising/models/item/spiteful_heart.json
 a5d1748ac27f0c323adb0f4636794a6e21a35f3c assets/blood_moon_rising/models/item/tainted_heart.json
+0824f2d7aeec9b575006383e6698952b9fcb2354 assets/blood_moon_rising/models/item/visceral_boots.json
+ea3880752b2529c995f969d0f34d7867950fe9a1 assets/blood_moon_rising/models/item/visceral_chestplate.json
+adc27de6995d8af8e9b578d2ad1e3fd4d81d79af assets/blood_moon_rising/models/item/visceral_helmet.json
+71995688702497a29daf074a44d07612a407d597 assets/blood_moon_rising/models/item/visceral_leggings.json
 0f5bcb354067aefbc6ed8417ba97b4fb2631a14a assets/blood_moon_rising/models/item/warham.json
 9452ca7c95ee07ca92c0a02109624b11fb35c75a assets/blood_moon_rising/models/item/wrathful_heart.json

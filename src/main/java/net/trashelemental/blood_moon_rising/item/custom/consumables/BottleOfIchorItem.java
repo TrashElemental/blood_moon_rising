@@ -23,7 +23,7 @@ public class BottleOfIchorItem extends Item {
 
         tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_health").withStyle(ChatFormatting.BLUE));
         tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_hunger").withStyle(ChatFormatting.RED));
-        tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_poison").withStyle(ChatFormatting.RED));
+        tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bottle_of_ichor_weakness").withStyle(ChatFormatting.RED));
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }

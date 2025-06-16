@@ -3,14 +3,11 @@ package net.trashelemental.blood_moon_rising.entity.client.renderers.projectiles
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.entity.client.models.LeechModel;
 import net.trashelemental.blood_moon_rising.entity.client.models.projectiles.SacredSpearProjectileModel;
-import net.trashelemental.blood_moon_rising.entity.custom.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
