@@ -1,0 +1,56 @@
+{
+  "values": [
+    {
+      "id": "minecraft:apple",
+      "required": false
+    },
+    {
+      "id": "minecraft:melon_slice",
+      "required": false
+    },
+    {
+      "id": "minecraft:melon",
+      "required": false
+    },
+    {
+      "id": "minecraft:sweet_berries",
+      "required": false
+    },
+    {
+      "id": "minecraft:glow_berries",
+      "required": false
+    },
+    {
+      "id": "minecraft:carrot",
+      "required": false
+    },
+    {
+      "id": "minecraft:potato",
+      "required": false
+    },
+    {
+      "id": "minecraft:baked_potato",
+      "required": false
+    },
+    {
+      "id": "minecraft:beetroot",
+      "required": false
+    },
+    {
+      "id": "minecraft:kelp",
+      "required": false
+    },
+    {
+      "id": "minecraft:dried_kelp",
+      "required": false
+    },
+    {
+      "id": "minecraft:pumpkin_pie",
+      "required": false
+    },
+    {
+      "id": "minecraft:pumpkin",
+      "required": false
+    }
+  ]
+}

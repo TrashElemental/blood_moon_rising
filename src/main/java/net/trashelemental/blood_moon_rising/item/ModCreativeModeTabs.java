@@ -9,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.Config;
+import net.trashelemental.blood_moon_rising.block.ModBlocks;
 
 public class ModCreativeModeTabs {
 
@@ -49,6 +50,26 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BOLUS.get());
                         output.accept(ModItems.PARASITE_EGGS.get());
 
+                        output.accept(ModItems.SCORCHED_HEART.get());
+                        output.accept(ModItems.TAINTED_HEART.get());
+                        output.accept(ModItems.FROZEN_HEART.get());
+                        output.accept(ModItems.ECHOING_HEART.get());
+                        output.accept(ModItems.FERAL_HEART.get());
+                        output.accept(ModItems.HEAVY_HEART.get());
+                        output.accept(ModItems.ELUSIVE_HEART.get());
+                        output.accept(ModItems.HUNGRY_HEART.get());
+                        output.accept(ModItems.SELFLESS_HEART.get());
+                        output.accept(ModItems.BROKEN_HEART.get());
+                        output.accept(ModItems.DIVIDING_HEART.get());
+                        output.accept(ModItems.SPITEFUL_HEART.get());
+                        output.accept(ModItems.FRANTIC_HEART.get());
+                        output.accept(ModItems.WRATHFUL_HEART.get());
+                        output.accept(ModItems.ASTRAL_HEART.get());
+
+                        //Blocks
+
+                        output.accept(ModBlocks.BILE_PUDDLE.get());
+
                         output.accept(ModItems.LEECH_SPAWN_EGG.get());
                         output.accept(ModItems.MOSQUITO_SPAWN_EGG.get());
 
@@ -67,22 +88,6 @@ public class ModCreativeModeTabs {
                             output.accept(ModItems.AMNION.get());
 
                             output.accept(ModItems.BLOODSHOT.get());
-
-                            output.accept(ModItems.SCORCHED_HEART.get());
-                            output.accept(ModItems.TAINTED_HEART.get());
-                            output.accept(ModItems.FROZEN_HEART.get());
-                            output.accept(ModItems.ECHOING_HEART.get());
-                            output.accept(ModItems.FERAL_HEART.get());
-                            output.accept(ModItems.HEAVY_HEART.get());
-                            output.accept(ModItems.ELUSIVE_HEART.get());
-                            output.accept(ModItems.HUNGRY_HEART.get());
-                            output.accept(ModItems.SELFLESS_HEART.get());
-                            output.accept(ModItems.BROKEN_HEART.get());
-                            output.accept(ModItems.DIVIDING_HEART.get());
-                            output.accept(ModItems.SPITEFUL_HEART.get());
-                            output.accept(ModItems.FRANTIC_HEART.get());
-                            output.accept(ModItems.WRATHFUL_HEART.get());
-                            output.accept(ModItems.ASTRAL_HEART.get());
                         }
                     })
                     .build());

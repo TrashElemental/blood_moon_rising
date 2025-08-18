@@ -7,13 +7,19 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.blood_moon.BloodMoonManager;
 import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
+import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.WoundMob;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -26,10 +32,12 @@ public class AugurItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if (Screen.hasShiftDown()) {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.augur").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
-        } else {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+        if (Config.DISPLAY_TOOLTIPS.get()) {
+            if (Screen.hasShiftDown()) {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.augur").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
 
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
@@ -56,7 +64,7 @@ public class AugurItem extends Item {
                 }
 
                 if (isBloodMoon) {
-                    highlightMobs();
+                    highlightMobs(player);
                 }
             }
             stack.hurtAndBreak(damage, player, (e) -> e.broadcastBreakEvent(player.getUsedItemHand()));
@@ -85,8 +93,21 @@ public class AugurItem extends Item {
             }
     }
 
-    public static void highlightMobs() {
+    public static void highlightMobs(Player player) {
+        if (player.level().isClientSide) return;
 
+        double radius = 40.0;
+        AABB area = new AABB(
+                player.getX() - radius, player.getY() - radius, player.getZ() - radius,
+                player.getX() + radius, player.getY() + radius, player.getZ() + radius
+        );
+
+        List<Mob> woundMobs = player.level().getEntitiesOfClass(Mob.class, area,
+                mob -> mob instanceof WoundMob && mob.isAlive());
+
+        for (Mob mob : woundMobs) {
+            mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 200, 0));
+        }
     }
 
 

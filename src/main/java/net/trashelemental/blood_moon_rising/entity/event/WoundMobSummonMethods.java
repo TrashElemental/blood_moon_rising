@@ -5,8 +5,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
+import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.ClotEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.WoundMob;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 
 public class WoundMobSummonMethods {
 
@@ -18,6 +20,16 @@ public class WoundMobSummonMethods {
             entity.setParasiteChance(parasiteChance);
             entity.setIsSpecialSummon(isSpecialSummon);
         }
+    }
+
+    public static void summonClot(ServerLevel level, LivingEntity entity) {
+        BlockPos entityPos = entity.getOnPos();
+        boolean specialSummon = entity instanceof WoundMob woundMob && woundMob.isSpecialSummon();
+        ClotEntity clot = new ClotEntity(ModEntities.CLOT.get(), level);
+
+        summonWoundMob(level, entityPos, clot, 0, 0, specialSummon);
+        level.playSound(entity, entityPos, SoundEvents.FROGSPAWN_HATCH, entity.getSoundSource(), 2f, 0.6f);
+        HemorrhageLogic.spawnBloodBurst(level, clot.getX(), clot.getY() + clot.getBbHeight() / 2, clot.getZ(), 20);
     }
 
     public static void summonParasites(ServerLevel level, LivingEntity entity, int lifespan, boolean persistent) {
@@ -43,7 +55,7 @@ public class WoundMobSummonMethods {
                 parasite.setLifespan(finalLifespan, persistent);
 
                 double x = entityPos.getX() + 0.5 + (level.getRandom().nextDouble() - 0.5);
-                double y = entityPos.getY() + 0.5;
+                double y = entityPos.getY() + 1;
                 double z = entityPos.getZ() + 0.5 + (level.getRandom().nextDouble() - 0.5);
                 parasite.moveTo(x, y, z);
 

@@ -1,6 +1,7 @@
 package net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FrostedIceBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
 
 import java.util.UUID;
 
@@ -40,6 +42,8 @@ public class FrozenHeartEffect extends AbstractHeartEffect {
         target.setTicksFrozen(freezeTicks + 280);
         if (freezeTicks > 500 && (!target.hasEffect(MobEffects.MOVEMENT_SLOWDOWN))) {
             target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 1, false, true));
+            ParticleMethods.ParticlesAroundServerSide(player.level(), ParticleTypes.SNOWFLAKE,
+                    target.getX(), target.getY()+1, target.getZ(), 10, 1);
         }
         super.onDamage(player, target, amount);
     }

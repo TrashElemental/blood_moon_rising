@@ -1,17 +1,11 @@
 package net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects;
 
-import com.mojang.datafixers.util.Pair;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.Tag;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SuspiciousStewItem;
 
 import java.util.UUID;
 

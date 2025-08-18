@@ -7,16 +7,22 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.blood_moon.BloodMoonManager;
 import net.trashelemental.blood_moon_rising.entity.event.WoundMobSummonMethods;
 import net.trashelemental.blood_moon_rising.junkyard_lib.entity.TamableEntity;
+import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 
 import javax.annotation.Nullable;
@@ -140,8 +146,7 @@ public class TamableWoundMob extends TamableEntity {
      * Ignored if they were specially summoned or have the amnion effect.
      */
     public boolean shouldDecay() {
-        return !isSpecialSummon();
-        //To do: Make this also account for the Kinship effect given by amnion.
+        return !isSpecialSummon() && !this.hasEffect(ModMobEffects.KINSHIP.get());
     }
 
     @Override
@@ -171,7 +176,7 @@ public class TamableWoundMob extends TamableEntity {
                 RandomSource random = this.getRandom();
 
                 if (random.nextFloat() < CLOT_SPAWN_CHANCE) {
-                    //To do: Set this up when we get clots made.
+                    BloodMoonRising.queueServerWork(20, () -> WoundMobSummonMethods.summonClot(level, this));
                 }
 
                 if (random.nextFloat() < PARASITE_SPAWN_CHANCE) {
@@ -179,6 +184,14 @@ public class TamableWoundMob extends TamableEntity {
                 }
             }
         }
+    }
+
+    static boolean isWoundAttackTarget(LivingEntity entity) {
+        return !invalidTarget(entity) && (entity instanceof Raider || entity.hasEffect(ModMobEffects.SCORN.get()));
+    }
+
+    static boolean invalidTarget(LivingEntity entity) {
+        return entity.hasEffect(ModMobEffects.KINSHIP.get());
     }
 
 }

@@ -1,30 +1,23 @@
 package net.trashelemental.blood_moon_rising.entity.custom.blood_moon;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.raid.Raider;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
-import net.trashelemental.blood_moon_rising.blood_moon.BloodMoonClientEvents;
+import net.trashelemental.blood_moon_rising.BloodMoonRising;
 import net.trashelemental.blood_moon_rising.blood_moon.BloodMoonManager;
-import net.trashelemental.blood_moon_rising.entity.event.MinionSpawnLogic;
 import net.trashelemental.blood_moon_rising.entity.event.WoundMobSummonMethods;
+import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
 
 import javax.annotation.Nullable;
@@ -34,15 +27,17 @@ public class WoundMob extends PathfinderMob {
     protected float PARASITE_SPAWN_CHANCE;
     protected boolean IS_SPECIAL_SUMMON = false;
     private int decayCountdown = 100;
+    protected String NAME;
 
-    public WoundMob(EntityType<? extends PathfinderMob> type, Level level, float clotSpawnChance, float parasiteSpawnChance) {
+    public WoundMob(EntityType<? extends PathfinderMob> type, Level level, float clotSpawnChance, float parasiteSpawnChance, String name) {
         super(type, level);
         this.CLOT_SPAWN_CHANCE = clotSpawnChance;
         this.PARASITE_SPAWN_CHANCE = parasiteSpawnChance;
+        this.NAME = name;
     }
 
-    public WoundMob(EntityType<? extends PathfinderMob> type, Level level) {
-        this(type, level, 0.0f, 0.0f);
+    public WoundMob(EntityType<? extends PathfinderMob> type, Level level, String name) {
+        this(type, level, 0.0f, 0.0f, name);
     }
 
     public void setClotChance(float chance) {
@@ -70,15 +65,15 @@ public class WoundMob extends PathfinderMob {
 
 
     public ResourceLocation getTexture() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","textures/entity/" + NAME + ".png");
     }
 
     public ResourceLocation getModelLocation() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","geo/models/entities/" + NAME + ".geo.json");
     }
 
     public ResourceLocation getAnimationLocation() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","animations/" + NAME + ".animation.json");
     }
 
 
@@ -148,8 +143,7 @@ public class WoundMob extends PathfinderMob {
      * Ignored if they were specially summoned or have the amnion effect.
      */
     public boolean shouldDecay() {
-        return !isSpecialSummon();
-        //To do: Make this also account for the Kinship effect given by amnion.
+        return !isSpecialSummon() && !this.hasEffect(ModMobEffects.KINSHIP.get());
     }
 
     @Override
@@ -179,14 +173,22 @@ public class WoundMob extends PathfinderMob {
                 RandomSource random = this.getRandom();
 
                 if (random.nextFloat() < CLOT_SPAWN_CHANCE) {
-                    //To do: Set this up when we get clots made.
+                    BloodMoonRising.queueServerWork(20, () -> WoundMobSummonMethods.summonClot(level, this));
                 }
 
                 if (random.nextFloat() < PARASITE_SPAWN_CHANCE) {
-                    WoundMobSummonMethods.summonParasites(level, this, 600, false);
+                    BloodMoonRising.queueServerWork(20, () -> WoundMobSummonMethods.summonParasites(level, this, 600, false));
                 }
             }
         }
+    }
+
+    static boolean isWoundAttackTarget(LivingEntity entity) {
+        return !invalidTarget(entity) && (entity instanceof Raider || entity.hasEffect(ModMobEffects.SCORN.get()));
+    }
+
+    static boolean invalidTarget(LivingEntity entity) {
+        return entity.hasEffect(ModMobEffects.KINSHIP.get());
     }
 
 }

@@ -1,13 +1,9 @@
 package net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects;
 
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.capabilities.heart_data.IHeartEffect;
 import net.trashelemental.blood_moon_rising.junkyard_lib.util.UtilMethods;
-import net.trashelemental.blood_moon_rising.util.event.AdjustHealthEvent;
 
 import java.util.UUID;
 

@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "minecraft:bone",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:exalted_bone",
+      "required": false
+    }
+  ]
+}

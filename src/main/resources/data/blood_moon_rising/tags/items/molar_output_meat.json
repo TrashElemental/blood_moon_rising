@@ -1,0 +1,28 @@
+{
+  "values": [
+    {
+      "id": "blood_moon_rising:chyme",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:exalted_bone",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:exalted_flesh",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:multiplying_morsel",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:ichor_clot",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:ligament",
+      "required": false
+    }
+  ]
+}

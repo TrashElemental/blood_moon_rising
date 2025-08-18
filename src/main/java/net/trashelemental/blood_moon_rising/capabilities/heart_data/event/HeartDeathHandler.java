@@ -12,7 +12,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.trashelemental.blood_moon_rising.capabilities.ModCapabilities;
 import net.trashelemental.blood_moon_rising.capabilities.heart_data.HeartData;
 import net.trashelemental.blood_moon_rising.capabilities.heart_data.HeartUtil;
-import net.trashelemental.blood_moon_rising.capabilities.heart_data.IHeartEffect;
 
 import java.util.*;
 

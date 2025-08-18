@@ -1,19 +1,21 @@
 package net.trashelemental.blood_moon_rising.item.custom;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.capabilities.ModCapabilities;
 import org.jetbrains.annotations.Nullable;
 
@@ -27,7 +29,17 @@ public class HeartItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-
+        if (Config.DISPLAY_TOOLTIPS.get()) {
+            if (Screen.hasShiftDown()) {
+                ResourceLocation id = BuiltInRegistries.ITEM.getKey(this);
+                String tooltipKey = "tooltip." + id.getNamespace() + "." + id.getPath() + "_desc";
+                tooltipComponents.add(Component.translatable(tooltipKey)
+                        .withStyle(ChatFormatting.ITALIC)
+                        .withStyle(ChatFormatting.DARK_GRAY));
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            }
+        }
 
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
     }
@@ -73,6 +85,8 @@ public class HeartItem extends Item {
                 }
             });
         }
+
+        player.playSound(SoundEvents.EVOKER_CAST_SPELL, 0.5f, 0.8f);
 
         return stack;
     }

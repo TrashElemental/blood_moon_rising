@@ -21,7 +21,7 @@ public class Config
 
     //Non-Demo
     public static final ForgeConfigSpec.BooleanValue DO_BLOOD_MOON = BUILDER
-            .comment("Controls whether blood moons happen. Defaults to true.")
+            .comment("Controls whether blood moons happen. This can also be controlled via gamerule. Defaults to true.")
             .define("Blood moons happen:", true);
 
     public static final ForgeConfigSpec.IntValue BLOOD_MOON_INTERVAL = BUILDER
@@ -37,6 +37,14 @@ public class Config
     public static final ForgeConfigSpec.BooleanValue DO_BLOOD_MOON_VISUAL_EFFECTS = BUILDER
             .comment("Controls whether the world fog, moon, and light should be tinted red during a blood moon. Defaults to true.")
             .define("Tint world fog red during a blood moon:", true);
+
+    public static final ForgeConfigSpec.BooleanValue DISPLAY_TOOLTIPS = BUILDER
+            .comment("Controls whether most functional items from this mod will have descriptive tooltips. Defaults to true.")
+            .define("Display tooltips:", true);
+    public static final ForgeConfigSpec.BooleanValue DISPLAY_POINTS = BUILDER
+            .comment("Controls whether items from this mod that use 'points' (such as the Jawblade and Sanguine Chalice) will display those points via tooltip. Defaults to false.")
+            .define("Display points:", false);
+
 
 
     static final ForgeConfigSpec SPEC = BUILDER.build();

@@ -1,6 +1,8 @@
 package net.trashelemental.blood_moon_rising.capabilities.heart_data.event;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -11,9 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -60,12 +60,23 @@ public class HeartEventHandler {
                     if (player.getRandom().nextFloat() < chance) {
                         event.setCanceled(true);
                         data.resetElusiveDodgeChance();
+
+                        player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                                SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 1.0f, 1.0f);
                     } else {
                         data.increaseElusiveDodgeChance();
                     }
                 }
+            });
+        }
 
+        if (target instanceof Player player) {
+            player.getCapability(ModCapabilities.HEART_DATA).ifPresent(data -> {
                 if (data.hasHeart(ModItems.FROZEN_HEART.get()) && event.getSource().is(DamageTypes.FREEZE)) {
+                    event.setCanceled(true);
+                }
+
+                if (data.hasHeart(ModItems.ELUSIVE_HEART.get()) && event.getSource().is(DamageTypes.FALL)) {
                     event.setCanceled(true);
                 }
             });

@@ -8,6 +8,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.block.ModBlocks;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -16,6 +17,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+
+        simpleBlock(ModBlocks.BILE_PUDDLE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/bile_puddle")));
 
     }
 

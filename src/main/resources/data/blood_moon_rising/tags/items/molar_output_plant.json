@@ -1,0 +1,36 @@
+{
+  "values": [
+    {
+      "id": "blood_moon_rising:chyme",
+      "required": false
+    },
+    {
+      "id": "minecraft:wheat_seeds",
+      "required": false
+    },
+    {
+      "id": "minecraft:beetroot_seeds",
+      "required": false
+    },
+    {
+      "id": "minecraft:melon_seeds",
+      "required": false
+    },
+    {
+      "id": "minecraft:pumpkin_seeds",
+      "required": false
+    },
+    {
+      "id": "minecraft:torchflower_seeds",
+      "required": false
+    },
+    {
+      "id": "minecraft:pitcher_pod",
+      "required": false
+    },
+    {
+      "id": "minecraft:cocoa_beans",
+      "required": false
+    }
+  ]
+}

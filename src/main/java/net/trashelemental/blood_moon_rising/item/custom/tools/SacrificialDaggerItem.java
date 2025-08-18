@@ -16,6 +16,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
@@ -32,13 +33,17 @@ public class SacrificialDaggerItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-//        int currentPoints = getCurrentPoints(stack);
-//        tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
+        if (Config.DISPLAY_POINTS.get()) {
+            int currentPoints = getCurrentPoints(stack);
+            tooltipComponents.add(Component.literal("Points: " + currentPoints + " / " + maxPoints));
+        }
 
-        if (Screen.hasShiftDown()) {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.sacrificial_dagger").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
-        } else {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+        if (Config.DISPLAY_TOOLTIPS.get()) {
+            if (Screen.hasShiftDown()) {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.sacrificial_dagger").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
 
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);

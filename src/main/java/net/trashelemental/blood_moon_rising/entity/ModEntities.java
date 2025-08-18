@@ -7,9 +7,11 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
-import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.*;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.projectiles.BileProjectileEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 
 public class ModEntities {
@@ -27,12 +29,36 @@ public class ModEntities {
                 ENTITY_TYPES.register("mosquito", () -> EntityType.Builder.of(MosquitoEntity::new, MobCategory.CREATURE)
                         .sized(0.4f, 0.3f).build("mosquito"));
 
+    public static final RegistryObject<EntityType<ClotEntity>> CLOT =
+            ENTITY_TYPES.register("clot", () -> EntityType.Builder.of(ClotEntity::new, MobCategory.MONSTER)
+                    .sized(1, 1f).build("clot"));
+    public static final RegistryObject<EntityType<ArteryEntity>> ARTERY =
+            ENTITY_TYPES.register("artery", () -> EntityType.Builder.of(ArteryEntity::new, MobCategory.MONSTER)
+                    .sized(1f, 1.5f).build("artery"));
+    public static final RegistryObject<EntityType<BoilEntity>> BOIL =
+            ENTITY_TYPES.register("boil", () -> EntityType.Builder.of(BoilEntity::new, MobCategory.MONSTER)
+                    .sized(1f, 1f).build("boil"));
+
+    public static final RegistryObject<EntityType<OrganelleEntity>> ORGANELLE =
+            ENTITY_TYPES.register("organelle", () -> EntityType.Builder.of(OrganelleEntity::new, MobCategory.MONSTER)
+                    .sized(0.8f, 0.5f).build("organelle"));
+    public static final RegistryObject<EntityType<MolarEntity>> MOLAR =
+            ENTITY_TYPES.register("molar", () -> EntityType.Builder.of(MolarEntity::new, MobCategory.MONSTER)
+                    .sized(0.8f, 0.5f).build("molar"));
+    public static final RegistryObject<EntityType<LesionEntity>> LESION =
+            ENTITY_TYPES.register("lesion", () -> EntityType.Builder.of(LesionEntity::new, MobCategory.MONSTER)
+                    .sized(1f, 2.5f).build("lesion"));
+
 
     //Projectiles
     public static final RegistryObject<EntityType<SacredSpearProjectileEntity>> SACRED_SPEAR_PROJECTILE_ENTITY =
             ENTITY_TYPES.register("sacred_spear_projectile_entity",
                     () -> EntityType.Builder.<SacredSpearProjectileEntity>of(SacredSpearProjectileEntity::new, MobCategory.MISC)
                             .sized(0.3f, 0.3f).build("sacred_spear_projectile_entity"));
+    public static final RegistryObject<EntityType<BileProjectileEntity>> BILE_PROJECTILE_ENTITY =
+            ENTITY_TYPES.register("bile_projectile_entity",
+                    () -> EntityType.Builder.<BileProjectileEntity>of(BileProjectileEntity::new, MobCategory.MISC)
+                            .sized(0.3f, 0.3f).build("bile_projectile_entity"));
 
 
 

@@ -11,6 +11,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class LeechRenderer extends GeoEntityRenderer<LeechEntity> {
     public LeechRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new LeechModel());
+        this.shadowRadius = 0.15f;
     }
 
     @Override

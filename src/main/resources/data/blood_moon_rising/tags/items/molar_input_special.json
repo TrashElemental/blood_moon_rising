@@ -1,0 +1,24 @@
+{
+  "values": [
+    {
+      "id": "minecraft:golden_apple",
+      "required": false
+    },
+    {
+      "id": "minecraft:golden_carrot",
+      "required": false
+    },
+    {
+      "id": "minecraft:glistering_melon_slice",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:warham",
+      "required": false
+    }
+  ]
+}

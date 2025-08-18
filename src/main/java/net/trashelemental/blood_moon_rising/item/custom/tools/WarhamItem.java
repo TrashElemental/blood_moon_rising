@@ -5,11 +5,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.capabilities.heart_data.heart_effects.AstralHeartEffect;
 import net.trashelemental.blood_moon_rising.item.ModToolTiers;
 import org.jetbrains.annotations.Nullable;
@@ -24,10 +24,12 @@ public class WarhamItem extends AxeItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if (Screen.hasShiftDown()) {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.warham").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
-        } else {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+        if (Config.DISPLAY_TOOLTIPS.get()) {
+            if (Screen.hasShiftDown()) {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.warham").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
 
         super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);

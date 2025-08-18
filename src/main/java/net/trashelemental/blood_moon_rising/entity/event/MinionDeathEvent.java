@@ -7,8 +7,8 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 
 import javax.annotation.Nullable;

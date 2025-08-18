@@ -10,6 +10,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.block.ModBlocks;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 
 
@@ -71,6 +72,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SPITEFUL_HEART);
         simpleItem(ModItems.TAINTED_HEART);
         simpleItem(ModItems.WRATHFUL_HEART);
+
+        //Block
+        singleTexture(ModBlocks.BILE_PUDDLE.getId().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/bile_puddle"));
 
     }
 

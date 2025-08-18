@@ -1,0 +1,76 @@
+{
+  "values": [
+    {
+      "id": "minecraft:enchanted_golden_apple",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:heart_of_gold",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:consecrated_flesh",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:astral_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:broken_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:dividing_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:echoing_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:elusive_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:feral_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:frantic_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:frozen_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:heavy_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:hungry_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:scorched_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:selfless_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:spiteful_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:tainted_heart",
+      "required": false
+    },
+    {
+      "id": "blood_moon_rising:wrathful_heart",
+      "required": false
+    }
+  ]
+}

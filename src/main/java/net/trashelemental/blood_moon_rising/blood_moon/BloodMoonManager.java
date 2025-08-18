@@ -14,6 +14,7 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.blood_moon.network.BloodMoonNetworking;
 import net.trashelemental.blood_moon_rising.blood_moon.network.BloodMoonStatusPacket;
+import net.trashelemental.blood_moon_rising.controls.ModGameRules;
 
 @Mod.EventBusSubscriber
 public class BloodMoonManager {
@@ -36,7 +37,9 @@ public class BloodMoonManager {
 
             if (overworld == null) return;
             boolean daylightCycleEnabled = overworld.getGameRules().getBoolean(GameRules.RULE_DAYLIGHT);
-            if (!daylightCycleEnabled) return;
+            boolean bloodMoonCycleEnabled = overworld.getGameRules().getBoolean(ModGameRules.DO_BLOOD_MOON_CYCLE);
+            if (!daylightCycleEnabled || !bloodMoonCycleEnabled) return;
+
 
             long time = overworld.getDayTime() % 24000L;
             int interval = Config.BLOOD_MOON_INTERVAL.get();

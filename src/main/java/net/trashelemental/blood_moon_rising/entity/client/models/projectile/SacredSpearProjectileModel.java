@@ -1,4 +1,4 @@
-package net.trashelemental.blood_moon_rising.entity.client.models;
+package net.trashelemental.blood_moon_rising.entity.client.models.projectile;
 
 import net.minecraft.resources.ResourceLocation;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
