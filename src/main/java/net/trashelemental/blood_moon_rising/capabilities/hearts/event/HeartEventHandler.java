@@ -1,5 +1,7 @@
 package net.trashelemental.blood_moon_rising.capabilities.hearts.event;
 
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -102,16 +104,22 @@ public class HeartEventHandler {
                 if (player.getRandom().nextFloat() < chance) {
                     event.setNewDamage(0);
                     data.resetElusiveDodgeChance();
+                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                            SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 1.0f, 1.0f);
                 } else {
                     data.increaseElusiveDodgeChance();
                 }
             }
         }
 
-        if (target instanceof Player player && event.getSource().is(DamageTypes.FREEZE)) {
+        if (target instanceof Player player) {
             HeartData data = player.getData(AttachmentsRegistry.HEART_DATA);
 
-            if (data.hasHeart(ModItems.FROZEN_HEART.get())) {
+            if (data.hasHeart(ModItems.FROZEN_HEART.get()) && event.getSource().is(DamageTypes.FREEZE)) {
+                event.setNewDamage(0);
+            }
+
+            if (data.hasHeart(ModItems.ELUSIVE_HEART.get()) && event.getSource().is(DamageTypes.FALL)) {
                 event.setNewDamage(0);
             }
         }

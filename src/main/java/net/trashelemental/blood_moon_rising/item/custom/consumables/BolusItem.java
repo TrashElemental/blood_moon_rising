@@ -21,6 +21,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.NetherWartBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.trashelemental.blood_moon_rising.Config;
 import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
 
 import java.util.List;
@@ -38,10 +39,12 @@ public class BolusItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
 
-        if (Screen.hasShiftDown()) {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bolus").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
-        } else {
-            tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+        if (Config.DISPLAY_TOOLTIPS.get()) {
+            if (Screen.hasShiftDown()) {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.bolus").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            } else {
+                tooltipComponents.add(Component.translatable("tooltip.blood_moon_rising.hold_shift").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GRAY));
+            }
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

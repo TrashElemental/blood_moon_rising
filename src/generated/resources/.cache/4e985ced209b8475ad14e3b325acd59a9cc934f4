@@ -1,7 +1,7 @@
-// 1.21.1	2024-11-11T21:47:51.5282936	Tags for minecraft:entity_type mod id blood_moon_rising
+// 1.21.1	2025-07-11T00:23:25.2423827	Tags for minecraft:entity_type mod id blood_moon_rising
 d4c8ea48ae30fa0d35c200928ddfacf02ff969f5 data/minecraft/tags/entity_type/aquatic.json
 80d31472287007de35375184e003c1e063e22946 data/minecraft/tags/entity_type/arthropod.json
 d4c8ea48ae30fa0d35c200928ddfacf02ff969f5 data/minecraft/tags/entity_type/axolotl_always_hostiles.json
 d4c8ea48ae30fa0d35c200928ddfacf02ff969f5 data/minecraft/tags/entity_type/can_breathe_under_water.json
 69cfce22b60696539b978698d2c2704db56f3577 data/minecraft/tags/entity_type/fall_damage_immune.json
-80d31472287007de35375184e003c1e063e22946 data/minecraft/tags/entity_type/frog_food.json
+c81e7aa5ac802e1a520d33aec3a40d688ed7f18f data/minecraft/tags/entity_type/frog_food.json

@@ -11,6 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.block.ModBlocks;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 
 public class ModItemModelProvider extends ItemModelProvider {
@@ -71,6 +72,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.SPITEFUL_HEART);
         simpleItem(ModItems.TAINTED_HEART);
         simpleItem(ModItems.WRATHFUL_HEART);
+
+        //Block
+
+        singleTexture(ModBlocks.BILE_PUDDLE.getId().getPath(),
+                mcLoc("item/generated"),
+                "layer0", modLoc("item/bile_puddle"));
 
     }
 

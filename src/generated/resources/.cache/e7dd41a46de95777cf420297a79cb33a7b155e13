@@ -1,7 +1,8 @@
-// 1.21.1	2025-05-15T19:26:03.1143834	Item Models: blood_moon_rising
+// 1.21.1	2025-08-13T04:47:53.2712077	Item Models: blood_moon_rising
 885cc58005424fb31403aa27d7c82ca9f3fe534b assets/blood_moon_rising/models/item/amnion.json
 0256a05d9f0659b2cc633cece2f3aba7e5486223 assets/blood_moon_rising/models/item/astral_heart.json
 efd04712feff3d2affcbf5eb5cfcebda2cb0db41 assets/blood_moon_rising/models/item/augur.json
+3bb15a8baac6774c9c691b91f932ccbb4030be6b assets/blood_moon_rising/models/item/bile_puddle.json
 7ac686226dbcbd0eeb913eaca26ef1c971c5ab4c assets/blood_moon_rising/models/item/bolus.json
 309a2f1e2f3b2484b18532e0da63b12a2b2452ab assets/blood_moon_rising/models/item/bottle_of_chrism.json
 a0613e7825703a7effb777064740920f14155562 assets/blood_moon_rising/models/item/bottle_of_ichor.json

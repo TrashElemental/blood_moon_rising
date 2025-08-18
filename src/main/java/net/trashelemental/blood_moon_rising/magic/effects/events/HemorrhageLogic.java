@@ -1,7 +1,10 @@
 package net.trashelemental.blood_moon_rising.magic.effects.events;
 
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -16,6 +19,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.trashelemental.blood_moon_rising.magic.effects.ModMobEffects;
 import net.trashelemental.blood_moon_rising.util.ModTags;
+import org.joml.Vector3f;
 
 import javax.annotation.Nullable;
 
@@ -70,7 +74,10 @@ public class HemorrhageLogic {
                 0.4F, 0.6F
         );
 
-        //Add blood particles later
+
+        if (target.level() instanceof ServerLevel level) {
+            spawnBloodBurst(level, target.getX(), target.getY() + target.getBbHeight() / 2, target.getZ(), 20);
+        }
 
     }
 
@@ -95,6 +102,14 @@ public class HemorrhageLogic {
         return source.is(DamageTypes.LAVA)
                 || source.is(DamageTypes.IN_FIRE)
                 || source.is(DamageTypes.ON_FIRE);
+    }
+
+    public static void spawnBloodBurst(ServerLevel level, double x, double y, double z, int count) {
+        float r = 0.4f + level.random.nextFloat() * 0.1f;
+        float g = level.random.nextFloat() * 0.02f;
+        float b = level.random.nextFloat() * 0.02f;
+        ParticleOptions blood = new DustParticleOptions(new Vector3f(r, g, b), 1.1f);
+        level.sendParticles(blood, x, y, z, count, 0.3, 0.3, 0.3, 2);
     }
 
 }

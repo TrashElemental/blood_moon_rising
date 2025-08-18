@@ -1,5 +1,6 @@
 package net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -7,6 +8,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.trashelemental.blood_moon_rising.junkyard_lib.util.UtilMethods;
+import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
 
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +29,8 @@ public class SelflessHeartEffect extends AbstractHeartEffect {
         if (entity.getHealth() < entity.getMaxHealth() && player.getHealth() > 2) {
             UtilMethods.damageEntity(player, DamageTypes.MAGIC, 2);
             entity.heal(5);
+            ParticleMethods.ParticlesAroundServerSide(player.level(), ParticleTypes.HEART,
+                    entity.getX(), entity.getY() + 1, entity.getZ(), 5, 2);
         }
 
         super.onInteract(player, entity);

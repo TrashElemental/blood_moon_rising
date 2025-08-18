@@ -12,6 +12,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class MorselRenderer extends GeoEntityRenderer<MorselEntity> {
     public MorselRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new MorselModel());
+        this.shadowRadius = 0.3f;
     }
 
     @Override

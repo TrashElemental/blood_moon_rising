@@ -12,6 +12,7 @@ import software.bernie.geckolib.renderer.GeoEntityRenderer;
 public class MosquitoRenderer extends GeoEntityRenderer<MosquitoEntity> {
     public MosquitoRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new MosquitoModel());
+        this.shadowRadius = 0.3f;
     }
 
     @Override

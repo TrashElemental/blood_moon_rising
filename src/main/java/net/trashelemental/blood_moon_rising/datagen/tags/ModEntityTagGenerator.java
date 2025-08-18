@@ -28,7 +28,8 @@ public class ModEntityTagGenerator extends EntityTypeTagsProvider {
 
         this.tag(EntityTypeTags.FROG_FOOD)
                 .add(ModEntities.MOSQUITO.get())
-                .add(ModEntities.LEECH.get());
+                .add(ModEntities.LEECH.get())
+                .add(ModEntities.CLOT.get());
 
         this.tag(EntityTypeTags.AXOLOTL_ALWAYS_HOSTILES)
                 .add(ModEntities.LEECH.get());

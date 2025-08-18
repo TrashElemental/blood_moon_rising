@@ -22,10 +22,10 @@ import net.trashelemental.blood_moon_rising.capabilities.AttachmentsRegistry;
 import net.trashelemental.blood_moon_rising.capabilities.hearts.HeartEffectsRegistry;
 import net.trashelemental.blood_moon_rising.components.ModComponents;
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
-import net.trashelemental.blood_moon_rising.entity.client.renderers.LeechRenderer;
-import net.trashelemental.blood_moon_rising.entity.client.renderers.MorselRenderer;
-import net.trashelemental.blood_moon_rising.entity.client.renderers.MosquitoRenderer;
+import net.trashelemental.blood_moon_rising.entity.client.renderers.*;
+import net.trashelemental.blood_moon_rising.entity.client.renderers.projectiles.BileProjectileRenderer;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.projectiles.SacredSpearProjectileRenderer;
+import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.OrganelleEntity;
 import net.trashelemental.blood_moon_rising.item.ModCreativeModeTabs;
 import net.trashelemental.blood_moon_rising.item.ModItemProperties;
 import net.trashelemental.blood_moon_rising.item.ModItems;
@@ -99,7 +99,16 @@ public class BloodMoonRising
             EntityRenderers.register(ModEntities.LEECH.get(), LeechRenderer::new);
             EntityRenderers.register(ModEntities.MOSQUITO.get(), MosquitoRenderer::new);
 
+            EntityRenderers.register(ModEntities.ORGANELLE.get(), OrganelleRenderer::new);
+            EntityRenderers.register(ModEntities.LESION.get(), LesionRenderer::new);
+            EntityRenderers.register(ModEntities.MOLAR.get(), MolarRenderer::new);
+
+            EntityRenderers.register(ModEntities.CLOT.get(), ClotRenderer::new);
+            EntityRenderers.register(ModEntities.ARTERY.get(), ArteryRenderer::new);
+            EntityRenderers.register(ModEntities.BOIL.get(), BoilRenderer::new);
+
             EntityRenderers.register(ModEntities.SACRED_SPEAR_PROJECTILE_ENTITY.get(), SacredSpearProjectileRenderer::new);
+            EntityRenderers.register(ModEntities.BILE_PROJECTILE_ENTITY.get(), BileProjectileRenderer::new);
 
         }
     }

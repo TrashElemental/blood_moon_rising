@@ -39,6 +39,15 @@ public class Config
             .comment("Controls whether the world fog, moon, and light should be tinted red during a blood moon. Defaults to true.")
             .define("Tint world fog red during a blood moon:", true);
 
+    public static final ModConfigSpec.BooleanValue DISPLAY_TOOLTIPS = BUILDER
+            .comment("Controls whether most functional items from this mod will have descriptive tooltips. Defaults to true.")
+            .define("Display tooltips:", true);
+    public static final ModConfigSpec.BooleanValue DISPLAY_POINTS = BUILDER
+            .comment("Controls whether items from this mod that use 'points' (such as the Jawblade and Sanguine Chalice) will display those points via tooltip. Defaults to false.")
+            .define("Display points:", false);
+
+
+
     static final ModConfigSpec SPEC = BUILDER.build();
 
     private static boolean validateItemName(final Object obj)

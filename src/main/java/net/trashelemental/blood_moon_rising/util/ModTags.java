@@ -25,6 +25,18 @@ public class ModTags {
 
     public static class Items {
 
+        public static final TagKey<Item> MOLAR_ACCEPTS = tag("molar_accepts");
+
+        public static final TagKey<Item> MOLAR_MEAT_INPUT = tag("molar_input_meat");
+        public static final TagKey<Item> MOLAR_MEAT_OUTPUT = tag("molar_output_meat");
+        public static final TagKey<Item> MOLAR_BONE_INPUT = tag("molar_input_bone");
+        public static final TagKey<Item> MOLAR_BONE_OUTPUT = tag("molar_output_bone");
+        public static final TagKey<Item> MOLAR_PLANT_INPUT = tag("molar_input_plant");
+        public static final TagKey<Item> MOLAR_PLANT_OUTPUT = tag("molar_output_plant");
+        public static final TagKey<Item> MOLAR_SPECIAL_INPUT = tag("molar_input_special");
+        public static final TagKey<Item> MOLAR_SPECIAL_OUTPUT = tag("molar_output_special");
+        public static final TagKey<Item> MOLAR_SUPER_SPECIAL_INPUT = tag("molar_input_super_special");
+        public static final TagKey<Item> MOLAR_SUPER_SPECIAL_OUTPUT = tag("molar_output_super_special");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(BloodMoonRising.MOD_ID, name));

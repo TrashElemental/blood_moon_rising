@@ -20,9 +20,15 @@ public class RefundHearts {
     public static void refundHeartsOnDeath(PlayerEvent.PlayerRespawnEvent event) {
         Player player = event.getEntity();
         Level level = player.level();
-        HeartData data = player.getData(AttachmentsRegistry.HEART_DATA);
+
 
         if (level.isClientSide) return;
+
+        refundHearts(player);
+    }
+
+    public static void refundHearts(Player player) {
+        HeartData data = player.getData(AttachmentsRegistry.HEART_DATA);
 
         for (Item heartItem : data.getActiveHearts()) {
             ItemStack stack = new ItemStack(heartItem);

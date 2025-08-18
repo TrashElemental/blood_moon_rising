@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#blood_moon_rising:molar_input_bone",
+    "#blood_moon_rising:molar_input_meat",
+    "#blood_moon_rising:molar_input_plant",
+    "#blood_moon_rising:molar_input_special",
+    "#blood_moon_rising:molar_input_super_special",
+    "#minecraft:meat",
+    {
+      "id": "minecraft:chorus_fruit",
+      "required": false
+    }
+  ]
+}

@@ -1,10 +1,14 @@
 package net.trashelemental.blood_moon_rising.entity.custom.projectiles;
 
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -15,6 +19,7 @@ import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 import net.trashelemental.blood_moon_rising.magic.effects.events.HemorrhageLogic;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
@@ -46,6 +51,26 @@ public class SacredSpearProjectileEntity extends AbstractArrow implements GeoEnt
         this.hemorrhageChance = chance;
     }
 
+    protected ParticleOptions getFollowingParticle() {
+        return new DustParticleOptions(new Vector3f(0.6f, 0.02f, 0.02f), 1.1f);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (this.level().isClientSide) {
+            ParticleOptions particleoptions = this.getFollowingParticle();
+            if (particleoptions != null) {
+                double d0 = this.getX();
+                double d1 = this.getY();
+                double d2 = this.getZ();
+
+                this.level().addParticle(particleoptions, d0, d1 + 0.25, d2, 0.0, 0.0, 0.0);
+            }
+        }
+    }
+
     @Override
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
@@ -54,6 +79,10 @@ public class SacredSpearProjectileEntity extends AbstractArrow implements GeoEnt
         if (!this.level().isClientSide && entity instanceof LivingEntity target) {
             if (this.random.nextFloat() < hemorrhageChance) {
                 HemorrhageLogic.applyHemorrhage(target, this.getOwner(), 240);
+                if (entity instanceof Player player) {
+                    int arrowCount = player.getArrowCount();
+                    player.setArrowCount(arrowCount - 1);
+                }
             }
         }
 

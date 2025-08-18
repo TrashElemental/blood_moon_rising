@@ -3,10 +3,13 @@ package net.trashelemental.blood_moon_rising.block;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.trashelemental.blood_moon_rising.BloodMoonRising;
+import net.trashelemental.blood_moon_rising.block.custom.BilePuddleBlock;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 
 import java.util.function.Supplier;
@@ -14,13 +17,8 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(BloodMoonRising.MOD_ID);
 
-//Building Blocks
-
-
-
-
-//Functional Blocks
-
+    public static final DeferredBlock<Block> BILE_PUDDLE = registerBlock("bile_puddle",
+            () -> new BilePuddleBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SNOW)));
 
 
 
