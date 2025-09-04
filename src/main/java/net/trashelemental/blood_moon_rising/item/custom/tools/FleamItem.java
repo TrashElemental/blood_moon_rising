@@ -3,6 +3,8 @@ package net.trashelemental.blood_moon_rising.item.custom.tools;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.Holder;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -25,6 +27,7 @@ import net.trashelemental.blood_moon_rising.capabilities.hearts.heart_effects.As
 import net.trashelemental.blood_moon_rising.entity.custom.MorselEntity;
 import net.trashelemental.blood_moon_rising.entity.event.MinionSpawnLogic;
 import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
+import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -65,7 +68,7 @@ public class FleamItem extends Item {
                     morsel.discard();
                     consumedMorsel = true;
 
-                    ParticleMethods.ParticleTrailEntityToEntity(level, ParticleTypes.DAMAGE_INDICATOR, morsel, player, 5);
+                    ParticleMethods.ParticleTrailEntityToEntity(level, getParticles(), morsel, player, 5);
                 }
 
                 if (consumedMorsel) {
@@ -91,7 +94,7 @@ public class FleamItem extends Item {
 
                     MinionSpawnLogic.spawnMorsel((ServerLevel) level, player, 900, true);
 
-                    ParticleMethods.ParticlesAroundServerSide(level, ParticleTypes.DAMAGE_INDICATOR,
+                    ParticleMethods.ParticlesAroundServerSide(level, getParticles(),
                             player.getX(), player.getY() + 0.5, player.getZ(), 5, 1.5);
 
                     if (!avoidDamage) {
@@ -107,6 +110,10 @@ public class FleamItem extends Item {
             }
         }
         return InteractionResultHolder.sidedSuccess(player.getItemInHand(usedHand), level.isClientSide());
+    }
+
+    protected ParticleOptions getParticles() {
+        return new DustParticleOptions(new Vector3f(0.6f, 0.02f, 0.02f), 1.1f);
     }
 }
 

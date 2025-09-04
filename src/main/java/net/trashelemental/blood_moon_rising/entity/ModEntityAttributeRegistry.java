@@ -22,6 +22,8 @@ public class ModEntityAttributeRegistry {
         event.put(ModEntities.ORGANELLE.get(), OrganelleEntity.createAttributes().build());
         event.put(ModEntities.LESION.get(), LesionEntity.createAttributes().build());
         event.put(ModEntities.MOLAR.get(), MolarEntity.createAttributes().build());
+        event.put(ModEntities.MOUTH.get(), MouthEntity.createAttributes().build());
+        event.put(ModEntities.LIMB.get(), LimbEntity.createAttributes().build());
 
         event.put(ModEntities.CLOT.get(), ClotEntity.createAttributes().build());
         event.put(ModEntities.ARTERY.get(), ArteryEntity.createAttributes().build());

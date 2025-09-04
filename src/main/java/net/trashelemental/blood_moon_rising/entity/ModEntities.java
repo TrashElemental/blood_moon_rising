@@ -12,6 +12,7 @@ import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.*;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.BileProjectileEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.projectiles.BloodProjectileEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 
 
@@ -48,6 +49,13 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<MolarEntity>> MOLAR =
             ENTITY_TYPES.register("molar", () -> EntityType.Builder.of(MolarEntity::new, MobCategory.MONSTER)
                     .sized(0.8f, 0.5f).build("molar"));
+    public static final DeferredHolder<EntityType<?>, EntityType<MouthEntity>> MOUTH =
+            ENTITY_TYPES.register("mouth", () -> EntityType.Builder.of(MouthEntity::new, MobCategory.MONSTER)
+                    .sized(1.5f, 1f).build("mouth"));
+
+    public static final DeferredHolder<EntityType<?>, EntityType<LimbEntity>> LIMB =
+            ENTITY_TYPES.register("limb", () -> EntityType.Builder.of(LimbEntity::new, MobCategory.CREATURE)
+                    .sized(1f, 1.2f).build("limb"));
 
 
 
@@ -60,6 +68,10 @@ public class ModEntities {
             ENTITY_TYPES.register("bile_projectile_entity",
                     () -> EntityType.Builder.<BileProjectileEntity>of(BileProjectileEntity::new, MobCategory.MISC)
                             .sized(0.3f, 0.3f).build("bile_projectile_entity"));
+    public static final DeferredHolder<EntityType<?>, EntityType<BloodProjectileEntity>> BLOOD_PROJECTILE_ENTITY =
+            ENTITY_TYPES.register("blood_projectile_entity",
+                    () -> EntityType.Builder.<BloodProjectileEntity>of(BloodProjectileEntity::new, MobCategory.MISC)
+                            .sized(0.3f, 0.3f).build("blood_projectile_entity"));
 
 
 

@@ -5,6 +5,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.MolarEntity;
 
@@ -46,9 +47,15 @@ public class MolarEatItemsGoal extends Goal {
 
     @Override
     public boolean canContinueToUse() {
-        return targetItem != null && targetItem.isAlive() &&
-                targetItem.distanceToSqr(mob) > 1.5 &&
-                isValidItem(targetItem);
+        if (targetItem == null || !targetItem.isAlive()) {
+            return false;
+        }
+
+        double reach = mob.getBbWidth() + 1;
+        double reachSq = reach * reach;
+
+        return targetItem.distanceToSqr(mob) > reachSq &&
+                (isValidItem(targetItem));
     }
 
     @Override
@@ -62,14 +69,22 @@ public class MolarEatItemsGoal extends Goal {
 
         mob.getLookControl().setLookAt(targetItem, 30.0F, 30.0F);
 
-        if (mob.distanceToSqr(targetItem) < 1.5) {
+        double reach = mob.getBbWidth() + 1;
+        double reachSq = reach * reach;
+
+        if (mob.distanceToSqr(targetItem) <= reachSq) {
             targetItem.discard();
             mob.playSound(SoundEvents.FOX_EAT, 1.0F, 0.6F);
             eatCooldown = cooldown;
             targetItem = null;
+            consumeItem();
         } else {
             mob.getNavigation().moveTo(targetItem, speed);
         }
+    }
+
+    public void consumeItem() {
+
     }
 
     @Override

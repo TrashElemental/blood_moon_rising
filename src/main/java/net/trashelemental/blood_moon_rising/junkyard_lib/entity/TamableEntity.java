@@ -7,6 +7,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -79,6 +80,24 @@ public class TamableEntity extends TamableAnimal {
 
 
     /**
+     * Prevents the tamed mob from attacking your other tamed mobs if you do so by accident.
+     */
+    @Override
+    public void tick() {
+        super.tick();
+
+        LivingEntity target = this.getTarget();
+        LivingEntity owner = this.getOwner();
+
+        if (!(owner == null)) {
+            if (target instanceof TamableAnimal ta && !(ta.getOwner() == null) && (ta.isOwnedBy(owner))) {
+                this.setTarget(null);
+            }
+        }
+    }
+
+
+    /**
      * Mob interact behavior.
      */
     @Override
@@ -90,7 +109,8 @@ public class TamableEntity extends TamableAnimal {
             if (!this.level().isClientSide) {
                 if (this.random.nextInt(5) == 0) {
                     this.tame(player);
-                    this.BEHAVIOR = "FOLLOW";
+                    behavior = Behavior.FOLLOW;
+                    onTamed(player);
                     this.level().broadcastEntityEvent(this, (byte) 7);
                 } else {
                     this.level().broadcastEntityEvent(this, (byte) 6);
@@ -101,7 +121,11 @@ public class TamableEntity extends TamableAnimal {
         }
 
         if (this.isTame() && this.isOwnedBy(player) && !(itemstack.is(breedItem))) {
-            cycleBehavior(player);
+
+            if (!this.level().isClientSide) {
+                cycleBehavior(player);
+            }
+
             return InteractionResult.sidedSuccess(this.level().isClientSide());
         }
         return super.mobInteract(player, hand);
@@ -111,38 +135,47 @@ public class TamableEntity extends TamableAnimal {
     /**
      * Behavior NBT and cycling method.
      */
-    public String BEHAVIOR = "WANDER";
-
-    private void setBehaviorInPersistentData(String behavior) {
-        CompoundTag tag = this.getPersistentData();
-        tag.putString("Behavior", behavior);
+    private void setBehaviorInPersistentData() {
+        this.getPersistentData().putString("Behavior", behavior.name());
     }
 
-    public boolean isFollowing() {
-        return this.BEHAVIOR.equals("FOLLOW");
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+        compound.putString("Behavior", behavior.name());
     }
 
-    public boolean isWandering() {
-        return this.BEHAVIOR.equals("WANDER");
-    }
-
-    private void cycleBehavior(Player pPlayer) {
-        switch (this.BEHAVIOR) {
-            case "FOLLOW":
-                this.BEHAVIOR = "WANDER";
-                pPlayer.displayClientMessage(Component.literal(getEntityName() + " will wander"), true);
-                break;
-            case "STAY":
-                this.BEHAVIOR = "FOLLOW";
-                pPlayer.displayClientMessage(Component.literal(getEntityName() + " will follow"), true);
-                break;
-            case "WANDER":
-                this.BEHAVIOR = "STAY";
-                pPlayer.displayClientMessage(Component.literal(getEntityName() + " will stay"), true);
-                break;
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+        if (compound.contains("Behavior")) {
+            behavior = Behavior.valueOf(compound.getString("Behavior"));
         }
-        this.setBehaviorInPersistentData(this.BEHAVIOR);
     }
+
+    public enum Behavior {
+        FOLLOW, WANDER, STAY
+    }
+
+    public Behavior behavior = Behavior.WANDER;
+
+    public boolean isFollowing() { return behavior == Behavior.FOLLOW; }
+    public boolean isWandering() { return behavior == Behavior.WANDER; }
+    public boolean isStaying() { return behavior == Behavior.STAY; }
+
+    private void cycleBehavior(Player player) {
+        behavior = switch (behavior) {
+            case FOLLOW -> Behavior.WANDER;
+            case WANDER -> Behavior.STAY;
+            case STAY -> Behavior.FOLLOW;
+        };
+        player.displayClientMessage(Component.literal(getEntityName() + " will " + behavior.name().toLowerCase()), true);
+        setBehaviorInPersistentData();
+        onBehaviorChanged(behavior);
+    }
+
+    protected void onTamed(Player owner) {}
+    protected void onBehaviorChanged(Behavior newBehavior) {}
 
     /**
      * Gets the entity's custom name if it has one, or defaults to its lang entry.
@@ -153,23 +186,6 @@ public class TamableEntity extends TamableAnimal {
             return this.getCustomName().getString();
         }
         return this.getType().getDescription().getString();
-    }
-
-    /**
-     * NBT data.
-     */
-    @Override
-    public void addAdditionalSaveData(CompoundTag compound) {
-        super.addAdditionalSaveData(compound);
-        compound.putString("Behavior", this.BEHAVIOR);
-    }
-
-    @Override
-    public void readAdditionalSaveData(CompoundTag compound) {
-        super.readAdditionalSaveData(compound);
-        if (compound.contains("Behavior")) {
-            this.BEHAVIOR = compound.getString("Behavior");
-        }
     }
 
 
