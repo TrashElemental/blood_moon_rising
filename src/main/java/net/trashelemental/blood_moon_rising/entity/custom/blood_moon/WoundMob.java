@@ -43,9 +43,11 @@ public class WoundMob extends PathfinderMob {
     public void setClotChance(float chance) {
         this.CLOT_SPAWN_CHANCE = chance;
     }
+    public float getClotChance() {return this.CLOT_SPAWN_CHANCE;}
     public void setParasiteChance(float chance) {
         this.PARASITE_SPAWN_CHANCE = chance;
     }
+    public float getParasiteChance() {return this.PARASITE_SPAWN_CHANCE;}
     public void setIsSpecialSummon(boolean special) {
         this.IS_SPECIAL_SUMMON = special;
     }
@@ -188,7 +190,7 @@ public class WoundMob extends PathfinderMob {
     }
 
     static boolean invalidTarget(LivingEntity entity) {
-        return entity.hasEffect(ModMobEffects.KINSHIP.get());
+        return entity.hasEffect(ModMobEffects.KINSHIP.get()) || entity instanceof WoundMob || entity instanceof TamableWoundMob;
     }
 
 }

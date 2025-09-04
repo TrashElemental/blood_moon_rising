@@ -54,9 +54,12 @@
   "entity.blood_moon_rising.mouth": "Mouth",
   "entity.blood_moon_rising.boil": "Boil",
   "entity.blood_moon_rising.lesion": "Lesion",
+  "entity.blood_moon_rising.limb": "Limb",
+  "entity.blood_moon_rising.embryo": "Embryo",
 
   "entity.blood_moon_rising.sacred_spear_projectile_entity": "Sacred Spear Projectile",
   "entity.blood_moon_rising.bile_projectile_entity": "Bile Projectile",
+  "entity.blood_moon_rising.blood_projectile_entity": "Blood Projectile",
 
   "item.blood_moon_rising.leech_spawn_egg": "Leech Spawn Egg",
   "item.blood_moon_rising.mosquito_spawn_egg": "Mosquito Spawn Egg",

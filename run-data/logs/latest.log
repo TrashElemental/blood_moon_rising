@@ -1,43 +1,43 @@
-[13Aug2025 03:18:13.920] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\conno\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.1, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, blood_moon_rising, --all, --output, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\generated\resources, --existing, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\main\resources, --mixin.config, blood_moon_rising.mixins.json]
-[13Aug2025 03:18:13.923] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[13Aug2025 03:18:14.025] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
-[13Aug2025 03:18:14.070] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/conno/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
-[13Aug2025 03:18:14.351] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.1\b9fa98d5c9fa107169a3390a1c8993d2134fbf54\javafmllanguage-1.20.1-47.3.1.jar is missing mods.toml file
-[13Aug2025 03:18:14.354] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.1\aaa252b4d4c34d0c02e647d7a2ef3df3bc11d73a\lowcodelanguage-1.20.1-47.3.1.jar is missing mods.toml file
-[13Aug2025 03:18:14.357] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.1\1722b26446496b5e686cdf124342e8f7fd33dc91\mclanguage-1.20.1-47.3.1.jar is missing mods.toml file
-[13Aug2025 03:18:14.361] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.1\4ed2bfe4ae3a6c27f587d45f58d648db68d19c00\fmlcore-1.20.1-47.3.1.jar is missing mods.toml file
-[13Aug2025 03:18:14.492] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
-[13Aug2025 03:18:15.651] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
-[13Aug2025 03:18:15.651] [main/ERROR] [mixin/]: Mixin config blood_moon_rising.mixins.json does not specify "minVersion" property
-[13Aug2025 03:18:15.657] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\conno\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, blood_moon_rising, --all, --output, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\generated\resources, --existing, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\main\resources]
-[13Aug2025 03:18:15.981] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\build\createSrgToMcp\output.srg
-[13Aug2025 03:18:16.265] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [blood_moon_rising]
-[13Aug2025 03:18:19.722] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.1, for MC 1.20.1 with MCP 20230612.114412
-[13Aug2025 03:18:19.723] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.1 Initialized
-[13Aug2025 03:18:19.776] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
-[13Aug2025 03:18:19.862] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
-[13Aug2025 03:18:19.867] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 3.133 ms
-[13Aug2025 03:18:20.185] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/conno/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
-[13Aug2025 03:18:20.186] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/conno/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
-[13Aug2025 03:18:20.304] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[13Aug2025 03:18:20.329] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 24 ms
-[13Aug2025 03:18:20.329] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
-[13Aug2025 03:18:20.332] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 3 ms
-[13Aug2025 03:18:20.332] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: blood_moon_rising
-[13Aug2025 03:18:20.428] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: blood_moon_rising finished after 95 ms
-[13Aug2025 03:18:20.428] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: blood_moon_rising
-[13Aug2025 03:18:20.455] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: blood_moon_rising finished after 26 ms
-[13Aug2025 03:18:20.455] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id blood_moon_rising
-[13Aug2025 03:18:20.457] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id blood_moon_rising finished after 2 ms
-[13Aug2025 03:18:20.457] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id blood_moon_rising
-[13Aug2025 03:18:20.466] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id blood_moon_rising finished after 8 ms
-[13Aug2025 03:18:20.466] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:entity_type mod id blood_moon_rising
-[13Aug2025 03:18:20.468] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:entity_type mod id blood_moon_rising finished after 1 ms
-[13Aug2025 03:18:20.468] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : blood_moon_rising
-[13Aug2025 03:18:20.470] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : blood_moon_rising finished after 2 ms
-[13Aug2025 03:18:20.471] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
-[13Aug2025 03:18:20.472] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 1 ms
-[13Aug2025 03:18:20.472] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Better Combat Weapon Attributes
-[13Aug2025 03:18:20.473] [main/INFO] [net.minecraft.data.DataGenerator/]: Better Combat Weapon Attributes finished after 0 ms
-[13Aug2025 03:18:20.473] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 168 ms
-[13Aug2025 03:18:20.484] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 83, old count: 83, new count: 84, removed stale: 0, written: 1
+[28Aug2025 20:32:08.439] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\conno\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.1, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, blood_moon_rising, --all, --output, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\generated\resources, --existing, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\main\resources, --mixin.config, blood_moon_rising.mixins.json]
+[28Aug2025 20:32:08.455] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.11 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[28Aug2025 20:32:08.560] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[28Aug2025 20:32:08.608] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/conno/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[28Aug2025 20:32:08.875] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.1\b9fa98d5c9fa107169a3390a1c8993d2134fbf54\javafmllanguage-1.20.1-47.3.1.jar is missing mods.toml file
+[28Aug2025 20:32:08.879] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.1\aaa252b4d4c34d0c02e647d7a2ef3df3bc11d73a\lowcodelanguage-1.20.1-47.3.1.jar is missing mods.toml file
+[28Aug2025 20:32:08.883] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.1\1722b26446496b5e686cdf124342e8f7fd33dc91\mclanguage-1.20.1-47.3.1.jar is missing mods.toml file
+[28Aug2025 20:32:08.886] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\conno\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.1\4ed2bfe4ae3a6c27f587d45f58d648db68d19c00\fmlcore-1.20.1-47.3.1.jar is missing mods.toml file
+[28Aug2025 20:32:09.018] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[28Aug2025 20:32:10.255] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[28Aug2025 20:32:10.255] [main/ERROR] [mixin/]: Mixin config blood_moon_rising.mixins.json does not specify "minVersion" property
+[28Aug2025 20:32:10.261] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\conno\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, blood_moon_rising, --all, --output, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\generated\resources, --existing, C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\src\main\resources]
+[28Aug2025 20:32:10.602] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\conno\Documents\Modding Projects\Blood Moon Rising\Project Folders\BMR Forge-NeoForge 1.20.1\build\createSrgToMcp\output.srg
+[28Aug2025 20:32:10.881] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [blood_moon_rising]
+[28Aug2025 20:32:14.256] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.1, for MC 1.20.1 with MCP 20230612.114412
+[28Aug2025 20:32:14.256] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.1 Initialized
+[28Aug2025 20:32:14.306] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[28Aug2025 20:32:14.388] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[28Aug2025 20:32:14.392] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 3.396 ms
+[28Aug2025 20:32:14.729] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/conno/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[28Aug2025 20:32:14.729] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/conno/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.1_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[28Aug2025 20:32:14.992] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[28Aug2025 20:32:15.032] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 40 ms
+[28Aug2025 20:32:15.032] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[28Aug2025 20:32:15.037] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 4 ms
+[28Aug2025 20:32:15.037] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: blood_moon_rising
+[28Aug2025 20:32:15.131] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: blood_moon_rising finished after 93 ms
+[28Aug2025 20:32:15.132] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: blood_moon_rising
+[28Aug2025 20:32:15.191] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: blood_moon_rising finished after 58 ms
+[28Aug2025 20:32:15.191] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id blood_moon_rising
+[28Aug2025 20:32:15.193] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id blood_moon_rising finished after 2 ms
+[28Aug2025 20:32:15.193] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id blood_moon_rising
+[28Aug2025 20:32:15.212] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id blood_moon_rising finished after 18 ms
+[28Aug2025 20:32:15.212] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:entity_type mod id blood_moon_rising
+[28Aug2025 20:32:15.214] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:entity_type mod id blood_moon_rising finished after 2 ms
+[28Aug2025 20:32:15.214] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : blood_moon_rising
+[28Aug2025 20:32:15.218] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : blood_moon_rising finished after 3 ms
+[28Aug2025 20:32:15.218] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
+[28Aug2025 20:32:15.219] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 1 ms
+[28Aug2025 20:32:15.219] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Better Combat Weapon Attributes
+[28Aug2025 20:32:15.230] [main/INFO] [net.minecraft.data.DataGenerator/]: Better Combat Weapon Attributes finished after 10 ms
+[28Aug2025 20:32:15.230] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 238 ms
+[28Aug2025 20:32:15.242] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 83, old count: 83, new count: 84, removed stale: 0, written: 0

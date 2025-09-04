@@ -74,7 +74,6 @@ public class OrganelleEntity extends WoundMob implements GeoEntity {
     }
 
 
-
     //Gecko
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {

@@ -12,6 +12,7 @@ import net.trashelemental.blood_moon_rising.entity.custom.blood_moon.*;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.LeechEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.parasites.MosquitoEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.BileProjectileEntity;
+import net.trashelemental.blood_moon_rising.entity.custom.projectiles.BloodProjectileEntity;
 import net.trashelemental.blood_moon_rising.entity.custom.projectiles.SacredSpearProjectileEntity;
 
 public class ModEntities {
@@ -48,7 +49,13 @@ public class ModEntities {
     public static final RegistryObject<EntityType<LesionEntity>> LESION =
             ENTITY_TYPES.register("lesion", () -> EntityType.Builder.of(LesionEntity::new, MobCategory.MONSTER)
                     .sized(1f, 2.5f).build("lesion"));
+    public static final RegistryObject<EntityType<MouthEntity>> MOUTH =
+            ENTITY_TYPES.register("mouth", () -> EntityType.Builder.of(MouthEntity::new, MobCategory.MONSTER)
+                    .sized(1.5f, 1f).build("mouth"));
 
+    public static final RegistryObject<EntityType<LimbEntity>> LIMB =
+            ENTITY_TYPES.register("limb", () -> EntityType.Builder.of(LimbEntity::new, MobCategory.CREATURE)
+                    .sized(1f, 1.2f).build("limb"));
 
     //Projectiles
     public static final RegistryObject<EntityType<SacredSpearProjectileEntity>> SACRED_SPEAR_PROJECTILE_ENTITY =
@@ -59,6 +66,10 @@ public class ModEntities {
             ENTITY_TYPES.register("bile_projectile_entity",
                     () -> EntityType.Builder.<BileProjectileEntity>of(BileProjectileEntity::new, MobCategory.MISC)
                             .sized(0.3f, 0.3f).build("bile_projectile_entity"));
+    public static final RegistryObject<EntityType<BloodProjectileEntity>> BLOOD_PROJECTILE_ENTITY =
+            ENTITY_TYPES.register("blood_projectile_entity",
+                    () -> EntityType.Builder.<BloodProjectileEntity>of(BloodProjectileEntity::new, MobCategory.MISC)
+                            .sized(0.3f, 0.3f).build("blood_projectile_entity"));
 
 
 

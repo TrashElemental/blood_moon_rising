@@ -1,6 +1,8 @@
 package net.trashelemental.blood_moon_rising.util.event;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -11,6 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
 import net.trashelemental.blood_moon_rising.magic.effects.event.HemorrhageLogic;
+import org.joml.Vector3f;
 
 import java.util.List;
 
@@ -33,8 +36,8 @@ public class NihilAttack {
                 continue;
             }
 
-            ParticleMethods.ParticlesAroundServerSide(level, ParticleTypes.DAMAGE_INDICATOR,
-                    mob.getX(), mob.getY() + 0.5, mob.getZ(), 5, 1.0);
+            ParticleMethods.ParticlesAroundServerSide(level, getParticles(),
+                    mob.getX(), mob.getEyeY(), mob.getZ(), 5, 2);
         }
     }
 
@@ -63,9 +66,13 @@ public class NihilAttack {
                 caster.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 300));
             }
 
-            ParticleMethods.ParticleTrailEntityToEntity(level, ParticleTypes.DAMAGE_INDICATOR, mob, caster, 5);
+            ParticleMethods.ParticleTrailEntityToEntity(level, getParticles(), mob, caster, 5);
 
 
         }
+    }
+
+    protected ParticleOptions getParticles() {
+        return new DustParticleOptions(new Vector3f(0.6f, 0.02f, 0.02f), 1.1f);
     }
 }

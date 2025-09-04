@@ -21,6 +21,7 @@ import net.trashelemental.blood_moon_rising.capabilities.heart_data.HeartEffects
 import net.trashelemental.blood_moon_rising.entity.ModEntities;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.*;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.projectile.BileProjectileRenderer;
+import net.trashelemental.blood_moon_rising.entity.client.renderers.projectile.BloodProjectileRenderer;
 import net.trashelemental.blood_moon_rising.entity.client.renderers.projectile.SacredSpearProjectileRenderer;
 import net.trashelemental.blood_moon_rising.item.ModCreativeModeTabs;
 import net.trashelemental.blood_moon_rising.item.ModItemProperties;
@@ -96,6 +97,9 @@ public class BloodMoonRising
             EntityRenderers.register(ModEntities.ORGANELLE.get(), OrganelleRenderer::new);
             EntityRenderers.register(ModEntities.MOLAR.get(), MolarRenderer::new);
             EntityRenderers.register(ModEntities.LESION.get(), LesionRenderer::new);
+            EntityRenderers.register(ModEntities.MOUTH.get(), MouthRenderer::new);
+
+            EntityRenderers.register(ModEntities.LIMB.get(), LimbRenderer::new);
 
             EntityRenderers.register(ModEntities.CLOT.get(), ClotRenderer::new);
             EntityRenderers.register(ModEntities.ARTERY.get(), ArteryRenderer::new);
@@ -103,6 +107,7 @@ public class BloodMoonRising
 
             EntityRenderers.register(ModEntities.SACRED_SPEAR_PROJECTILE_ENTITY.get(), SacredSpearProjectileRenderer::new);
             EntityRenderers.register(ModEntities.BILE_PROJECTILE_ENTITY.get(), BileProjectileRenderer::new);
+            EntityRenderers.register(ModEntities.BLOOD_PROJECTILE_ENTITY.get(), BloodProjectileRenderer::new);
 
         }
     }

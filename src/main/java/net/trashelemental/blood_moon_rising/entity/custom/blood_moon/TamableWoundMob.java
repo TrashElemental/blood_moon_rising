@@ -32,23 +32,27 @@ public class TamableWoundMob extends TamableEntity {
     protected float PARASITE_SPAWN_CHANCE;
     protected boolean IS_SPECIAL_SUMMON = false;
     private int decayCountdown = 100;
+    protected String NAME;
 
-    public TamableWoundMob(EntityType<? extends TamableEntity> type, Level level, Item tameItem, Item breedItem, float clotSpawnChance, float parasiteSpawnChance) {
+    public TamableWoundMob(EntityType<? extends TamableEntity> type, Level level, Item tameItem, Item breedItem, float clotSpawnChance, float parasiteSpawnChance, String name) {
         super(type, level, tameItem, breedItem);
         this.CLOT_SPAWN_CHANCE = clotSpawnChance;
         this.PARASITE_SPAWN_CHANCE = parasiteSpawnChance;
+        this.NAME = name;
     }
 
-    public TamableWoundMob(EntityType<? extends TamableEntity> type, Level level, Item tameItem, Item breedItem) {
-        this(type, level, tameItem, breedItem, 0.0f, 0.0f);
+    public TamableWoundMob(EntityType<? extends TamableEntity> type, Level level, Item tameItem, Item breedItem, String name) {
+        this(type, level, tameItem, breedItem, 0.0f, 0.0f, name);
     }
 
     public void setClotChance(float chance) {
         this.CLOT_SPAWN_CHANCE = chance;
     }
+    public float getClotChance() {return this.CLOT_SPAWN_CHANCE;}
     public void setParasiteChance(float chance) {
         this.PARASITE_SPAWN_CHANCE = chance;
     }
+    public float getParasiteChance() {return this.PARASITE_SPAWN_CHANCE;}
     public void setIsSpecialSummon(boolean special) {
         this.IS_SPECIAL_SUMMON = special;
     }
@@ -68,15 +72,15 @@ public class TamableWoundMob extends TamableEntity {
 
 
     public ResourceLocation getTexture() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","textures/entity/" + NAME + ".png");
     }
 
     public ResourceLocation getModelLocation() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","geo/models/entities/" + NAME + ".geo.json");
     }
 
     public ResourceLocation getAnimationLocation() {
-        return null;
+        return new ResourceLocation("blood_moon_rising","animations/" + NAME + ".animation.json");
     }
 
 
@@ -191,7 +195,7 @@ public class TamableWoundMob extends TamableEntity {
     }
 
     static boolean invalidTarget(LivingEntity entity) {
-        return entity.hasEffect(ModMobEffects.KINSHIP.get());
+        return entity.hasEffect(ModMobEffects.KINSHIP.get()) || entity instanceof WoundMob || entity instanceof TamableWoundMob;
     }
 
 }

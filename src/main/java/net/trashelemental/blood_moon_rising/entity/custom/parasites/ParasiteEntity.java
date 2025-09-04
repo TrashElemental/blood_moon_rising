@@ -1,5 +1,6 @@
 package net.trashelemental.blood_moon_rising.entity.custom.parasites;
 
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -26,6 +27,7 @@ import net.minecraft.world.level.Level;
 import net.trashelemental.blood_moon_rising.entity.ai.ModFollowOwnerGoal;
 import net.trashelemental.blood_moon_rising.item.ModItems;
 import net.trashelemental.blood_moon_rising.junkyard_lib.entity.MinionEntity;
+import org.joml.Vector3f;
 
 public class ParasiteEntity extends MinionEntity {
 
@@ -33,7 +35,9 @@ public class ParasiteEntity extends MinionEntity {
     private static final EntityDataAccessor<Boolean> IS_RARE_SPAWN = SynchedEntityData.defineId(ParasiteEntity.class, EntityDataSerializers.BOOLEAN);
 
     public ParasiteEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
-        super(entityType, level, ParticleTypes.DAMAGE_INDICATOR, SoundEvents.BEEHIVE_ENTER);
+        super(entityType, level,
+                new DustParticleOptions(new Vector3f(0.6f, 0.02f, 0.02f), 1.1f),
+                SoundEvents.BEEHIVE_ENTER);
         this.entityData.set(IS_RARE_SPAWN, false);
     }
 

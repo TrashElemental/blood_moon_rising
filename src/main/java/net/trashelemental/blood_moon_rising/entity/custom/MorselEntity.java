@@ -1,6 +1,8 @@
 package net.trashelemental.blood_moon_rising.entity.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -21,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.trashelemental.blood_moon_rising.junkyard_lib.entity.MinionEntity;
 import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
+import org.joml.Vector3f;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -34,7 +37,7 @@ public class MorselEntity extends MinionEntity implements GeoEntity {
 
     public MorselEntity(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level,
-                ParticleTypes.DAMAGE_INDICATOR,
+                new DustParticleOptions(new Vector3f(0.6f, 0.02f, 0.02f), 1.1f),
                 SoundEvents.WART_BLOCK_BREAK);
         this.spawnTick = this.tickCount;
     }
@@ -121,10 +124,19 @@ public class MorselEntity extends MinionEntity implements GeoEntity {
     }
 
     @Override
+    protected void playHurtSound(DamageSource pSource) {
+        playSound(SoundEvents.HUSK_HURT, 0.15f, 1.5f);
+    }
+
+    @Override
     public SoundEvent getDeathSound() {
         return SoundEvents.HUSK_DEATH;
     }
 
+    @Override
+    public float getVoicePitch() {
+        return super.getVoicePitch() * 1.5F;
+    }
 
     //Gecko
     @Override

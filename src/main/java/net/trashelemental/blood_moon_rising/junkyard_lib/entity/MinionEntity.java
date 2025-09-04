@@ -5,13 +5,11 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.trashelemental.blood_moon_rising.junkyard_lib.visual.particle.ParticleMethods;
@@ -127,6 +125,17 @@ public class MinionEntity extends TamableAnimal {
         ParticleMethods.ParticlesAround(this.level(), particles, this, 10, 0.5);
     }
 
+
+    /**
+     * Unable to collide with its owner.
+     */
+    @Override
+    protected void doPush(Entity other) {
+        if (other instanceof Player player && this.isOwnedBy(player)) {
+            return;
+        }
+        super.push(other);
+    }
 
     /**
      * Lifespan, ticking, and despawning behavior.

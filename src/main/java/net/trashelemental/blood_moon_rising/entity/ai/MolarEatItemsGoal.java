@@ -59,7 +59,10 @@ public class MolarEatItemsGoal extends Goal {
 
         FoodProperties food = targetItem.getItem().getFoodProperties(mob);
 
-        return targetItem.distanceToSqr(mob) > 1.5 &&
+        double reach = mob.getBbWidth() + 1;
+        double reachSq = reach * reach;
+
+        return targetItem.distanceToSqr(mob) > reachSq &&
                 (isValidItem(targetItem) || (food != null && food.isMeat()));
     }
 
@@ -74,14 +77,22 @@ public class MolarEatItemsGoal extends Goal {
 
         mob.getLookControl().setLookAt(targetItem, 30.0F, 30.0F);
 
-        if (mob.distanceToSqr(targetItem) < 1.5) {
+        double reach = mob.getBbWidth() + 1;
+        double reachSq = reach * reach;
+
+        if (mob.distanceToSqr(targetItem) <= reachSq) {
             targetItem.discard();
             mob.playSound(SoundEvents.FOX_EAT, 1.0F, 0.6F);
             eatCooldown = cooldown;
             targetItem = null;
+            consumeItem();
         } else {
             mob.getNavigation().moveTo(targetItem, speed);
         }
+    }
+
+    public void consumeItem() {
+
     }
 
     @Override
